@@ -29,7 +29,7 @@
 </p>
 
 <p>
-  <a href="https://github.com/KS-GG-AI/adguardhome-homelab-stack/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
+  <a href="https://github.com/KS-GG-AI/adguard-homelab/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
   <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&labelColor=161126" alt="License: MIT" /></a>
   <a href="https://adguard.com/adguard-home.html"><img src="https://img.shields.io/badge/AdGuard%20Home-v0.107+-green.svg?style=flat-square&labelColor=161126" alt="AdGuard Home" /></a>
   <img src="https://img.shields.io/badge/Protocol-HTTP%2F2%20%7C%20HTTP%2F3%20QUIC-orange.svg?style=flat-square&labelColor=161126" alt="HTTP/2 & HTTP/3" />
@@ -46,8 +46,10 @@
 ---
 <div dir="rtl">
 
+---
 
-## بنية الشبكة: الشبكة الخارجية مقابل الداخلية وموزع التبديل 2.5G
+<details>
+<summary><h2 style="display:inline-block; margin:0;">بنية الشبكة: الشبكة الخارجية مقابل الداخلية وموزع التبديل 2.5G</h2></summary>
 
 تم تصميم هذه البنية بناءً على مبادئ **الفصل المادي الصارم للشبكات (Physical Segmentation)** و**عزل الحاويات المستقلة بدون اقتران (Zero-Coupling Pod Isolation)**، مما يعزل تماماً الإنترنت الخارجي غير الموثوق عن الشبكة المحلية الداخلية عالية السرعة.
 
@@ -67,9 +69,12 @@
 - **اتصال فائق السرعة بين الأجهزة الافتراضية وDNS في 0 ملي ثانية**: نقل الملفات الضخمة بين الأجهزة الافتراضية (Samba, NFS, SSH, قواعد البيانات) يستغل كامل سرعة 2.5 جيجابت. بينما تتم معالجة استعلامات DNS محلياً داخل نفس الخادم عبر الاسترجاع الذاتي (10.0.X.2:53 UDP) في أقل من 0.1 ملي ثانية.
 - **تبديل تلقائي فوري للأعطال خلال ثانية واحدة (Instant Failover)**: تحتوي إعدادات DNS للأجهزة الافتراضية على الخادم المحلي الأساسي 10.0.X.2 والخادم العام الاحتياطي 1.1.1.1 مع خيارات options timeout:1 attempts:1. إذا توقف AdGuard، تنتقل الحركة تلقائياً خلال ثانية واحدة دون انقطاع الاتصال.
 
+</details>
+
 ---
 
-## متطلبات النظام: المواصفات الدنيا مقابل الموصى بها
+<details>
+<summary><h2 style="display:inline-block; margin:0;">متطلبات النظام: المواصفات الدنيا مقابل الموصى بها</h2></summary>
 
 | المكون | المتطلبات الدنيا (بيئة اختبار بسيطة) | المواصفات الموصى بها (بيئة الإنتاج المنزلي) | عقدة مؤسسية متعددة الأجهزة (تم التحقق منها) |
 | :--- | :--- | :--- | :--- |
@@ -81,9 +86,12 @@
 | **نظام المحاكاة الافتراضية** | Proxmox VE 7+, KVM, ESXi | Proxmox VE 8.x / عتاد مادي | عقد مستقلة على Proxmox VE 8.x |
 | **نظام التشغيل الضيف** | Debian 12 / Ubuntu 22.04 LTS | Debian 12 (نواة 6.1+) | Debian 12 + TCP BBR + 7.5MB UDP |
 
+</details>
+
 ---
 
-## سيناريوهات الاستخدام حسب الغرض
+<details>
+<summary><h2 style="display:inline-block; margin:0;">سيناريوهات الاستخدام حسب الغرض</h2></summary>
 
 ### 1. 🏡 درع شبكة المنزل الذكي والمختبر المنزلي
 - حظر مركزي شامل للإعلانات وأدوات التتبع والبرمجيات الخبيثة لجميع أجهزة المنزل (التلفزيونات الذكية، الهواتف، أجهزة IoT ومنصات الألعاب) دون الحاجة لتثبيت تطبيقات.
@@ -97,9 +105,12 @@
 ### 4. 🔒 نقل مشفر من الجيل التالي (DoQ / HTTP/3 و DoT)
 - استبدال منفذ UDP 53 التقليدي غير المشفر ببروتوكولات DNS-over-QUIC (HTTP/3 UDP 853) وDNS-over-TLS (TCP 853)، مع واجهة ويب HTTP/2 وشهادات SAN صالحة لمدة 20 عاماً.
 
+</details>
+
 ---
 
-## أبرز ميزات الأداء
+<details>
+<summary><h2 style="display:inline-block; margin:0;">أبرز ميزات الأداء</h2></summary>
 
 - **⚡ مبادلة الذاكرة المضغوطة ZRAM بتقنية zstd**: محرك ذاكرة مضغوط بحجم 1 جيجابايت مع إعدادات swappiness 180 وpage-cluster 0 لإلغاء اختناقات الإدخال/الإخراج.
 - **🚀 ضبط مكدس شبكة النواة (Kernel)**: التحكم في الازدحام عبر TCP BBR، وجدولة طوابير FQ، وتوسيع مخازن مقابس UDP إلى 7.5 ميجابايت لمنع فقدان الحزم أثناء الذروة.
@@ -107,9 +118,12 @@
 - **🛡️ شهادات TLS آلية صالحة لمدة 20 عاماً**: توليد تلقائي لشهادات SAN صالحة لمدة 7,300 يوم حتى عام 2046 دون الاعتماد على جهات خارجية للتجديد.
 - **🔄 إعادة توجيه شفافة للمنفذ 80**: قاعدة NAT دائمة في iptables تحول المنفذ 80 تلقائياً إلى 3000 دون الحاجة لكتابة رقم المنفذ في المتصفح.
 
+</details>
+
 ---
 
-## هيكل المجلدات
+<details>
+<summary><h2 style="display:inline-block; margin:0;">هيكل المجلدات</h2></summary>
 
 ```
 ├── configs/
@@ -141,9 +155,12 @@
 └── README.md
 ```
 
+</details>
+
 ---
 
-## دليل البدء السريع
+<details>
+<summary><h2 style="display:inline-block; margin:0;">دليل البدء السريع</h2></summary>
 
 ### 1. المتطلبات الأساسية
 - جهاز افتراضي جديد يعمل بنظام Debian 12 / 13 أو Ubuntu 22.04 / 24.04.
@@ -151,8 +168,8 @@
 
 ### 2. التثبيت الآلي للعقدة
 ```bash
-git clone https://github.com/KS-GG-AI/adguardhome-homelab-stack.git
-cd adguardhome-homelab-stack/scripts
+git clone https://github.com/KS-GG-AI/adguard-homelab.git
+cd adguard-homelab/scripts
 chmod +x setup-node.sh generate-self-signed-cert.sh verify-health.sh
 
 # تشغيل سكريبت التثبيت (مع تحديد عنوان IP الثابت الداخلي)
@@ -169,18 +186,37 @@ sudo ./verify-health.sh 10.0.1.2
 - **Web UI**: استجابة HTTP/2 200/302 عند الدخول إلى https://10.0.1.2.
 - **DNS**: المنافذ 53 (UDP) و443 (DoH) و853 (DoT & DoQ / HTTP/3) في حالة استماع نشطة.
 
+</details>
+
 ---
 
-## تدقيق الأمان والامتثال
+<details>
+<summary><h2 style="display:inline-block; margin:0;">تدقيق الأمان والامتثال</h2></summary>
 
 - **خلو تام من الأسرار الثابتة**: تمت إزالة جميع كلمات المرور وتجزئات bcrypt والمفاتيح الخاصة وتوفيرها كقوالب آمنة.
 - **دعم كامل للشبكات المعزولة (Air-Gapped)**: شهادات صالحة لمدة 20 عاماً تعمل دون الحاجة للتواصل مع واجهات تجديد خارجية كل 90 يوماً.
 - **انعدام تام للاعتمادية المتبادلة بين العقد**: تعمل الأجهزة المادية باستقلالية كاملة دون الحاجة لنصاب قانوني موزع.
 
+</details>
+
 ---
 
-## الترخيص
+<details>
+<summary><h2 style="display:inline-block; margin:0;">الترخيص</h2></summary>
 
 مرخص بموجب [رخصة MIT](../LICENSE).
 
 </div>
+
+</details>
+
+---
+
+<details>
+<summary><h2 style="display:inline-block; margin:0;">📬 للتواصل</h2></summary>
+
+للعمل العام، الملاحظات، أو إلقاء نظرة فاحصة على التنفيذ، هذه هي أوضح نقاط البداية.
+
+[الملف الشخصي على GitHub](https://github.com/KS-GG-AI) · [المستودعات العامة](https://github.com/KS-GG-AI?tab=repositories) · [فتح مشكلة](https://github.com/KS-GG-AI/adguard-homelab/issues/new) · [مصدر الملف الشخصي](https://github.com/KS-GG-AI/KS-GG-AI)
+
+</details>

@@ -29,7 +29,7 @@
 </p>
 
 <p>
-  <a href="https://github.com/KS-GG-AI/adguardhome-homelab-stack/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
+  <a href="https://github.com/KS-GG-AI/adguard-homelab/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
   <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&labelColor=161126" alt="License: MIT" /></a>
   <a href="https://adguard.com/adguard-home.html"><img src="https://img.shields.io/badge/AdGuard%20Home-v0.107+-green.svg?style=flat-square&labelColor=161126" alt="AdGuard Home" /></a>
   <img src="https://img.shields.io/badge/Protocol-HTTP%2F2%20%7C%20HTTP%2F3%20QUIC-orange.svg?style=flat-square&labelColor=161126" alt="HTTP/2 & HTTP/3" />
@@ -45,7 +45,8 @@
 
 ---
 
-## Arquitetura de Rede: Rede Externa vs. Interna e Switch Hub de 2.5G
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Arquitetura de Rede: Rede Externa vs. Interna e Switch Hub de 2.5G</h2></summary>
 
 Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliência de pods independentes sem acoplamento (Zero-Coupling Pod Isolation)**, separando o tráfego externo WAN não confiável da rede interna LAN de alta largura de banda.
 
@@ -65,9 +66,12 @@ Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliênci
 - **Comunicação de Alta Velocidade entre VMs e Resolução DNS em 0 ms**: Transferências pesadas entre VMs (Samba, NFS, SSH, bancos de dados) utilizam a velocidade total de 2.5 Gbps. As consultas DNS são resolvidas na máquina local via loopback (10.0.X.2:53 UDP) em menos de 0.1 ms.
 - **Failover Instantâneo de 1 Segundo (Instant Failover)**: A configuração de rede das VMs inclui o resolver primário 10.0.X.2 e secundário público 1.1.1.1 com options timeout:1 attempts:1. Se o AdGuard parar, o tráfego migra suavemente em 1 segundo sem quedas de conexão.
 
+</details>
+
 ---
 
-## Especificações do Sistema: Requisitos Mínimos vs. Recomendados
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Especificações do Sistema: Requisitos Mínimos vs. Recomendados</h2></summary>
 
 | Componente | Requisitos Mínimos (Laboratório Básico) | Especificações Recomendadas (Produção Homelab) | Pod Corporativo Multi-Nó (Validado) |
 | :--- | :--- | :--- | :--- |
@@ -79,9 +83,12 @@ Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliênci
 | **Hipervisor** | Proxmox VE 7+, KVM, ESXi | Proxmox VE 8.x / Bare Metal | Pods independentes Proxmox VE 8.x |
 | **SO Convidado** | Debian 12 / Ubuntu 22.04 LTS | Debian 12 (Kernel 6.1+) | Debian 12 + TCP BBR + 7.5MB UDP |
 
+</details>
+
 ---
 
-## Cenários de Uso por Finalidade
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Cenários de Uso por Finalidade</h2></summary>
 
 ### 1. 🏡 Proteção de Rede para Casa Inteligente e Homelab
 - Bloqueio centralizado de anúncios, telemetria e malware sem instalação de aplicativos para Smart TVs, celulares, IoT e consoles.
@@ -95,9 +102,12 @@ Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliênci
 ### 4. 🔒 Transporte Criptografado de Última Geração (DoQ / HTTP/3 e DoT)
 - Substitui o protocolo UDP 53 em texto não criptografado por DNS-over-QUIC (HTTP/3 UDP 853) e DNS-over-TLS (TCP 853), com interface web HTTP/2 e certificados SAN de 20 anos.
 
+</details>
+
 ---
 
-## Principais Recursos de Desempenho
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Principais Recursos de Desempenho</h2></summary>
 
 - **⚡ Swap Compactado ZRAM com zstd**: Drive RAM compactado de 1GB com swappiness 180 e page-cluster 0 que elimina gargalos de I/O em disco.
 - **🚀 Otimização do Stack de Rede do Kernel**: Controle de congestionamento TCP BBR, filas FQ e buffers de socket UDP expandidos para 7.5MB (rmem_max/wmem_max) para suportar picos de tráfego.
@@ -105,9 +115,12 @@ Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliênci
 - **🛡️ Certificados TLS Automatizados para 20 Anos**: Geração automática de certificados SAN válidos por 7.300 dias até 2046 sem dependência de renovação externa.
 - **🔄 Redirecionamento Transparente da Porta 80**: Regra NAT persistente do iptables redirecionando a porta HTTP 80 para 3000 sem exigir digitação da porta no navegador.
 
+</details>
+
 ---
 
-## Estrutura de Diretórios
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Estrutura de Diretórios</h2></summary>
 
 ```
 ├── configs/
@@ -139,9 +152,12 @@ Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliênci
 └── README.md
 ```
 
+</details>
+
 ---
 
-## Guia de Início Rápido
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Guia de Início Rápido</h2></summary>
 
 ### 1. Pré-requisitos
 - VM limpa com Debian 12 / 13 ou Ubuntu 22.04 / 24.04.
@@ -149,8 +165,8 @@ Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliênci
 
 ### 2. Instalação Automatizada do Nó
 ```bash
-git clone https://github.com/KS-GG-AI/adguardhome-homelab-stack.git
-cd adguardhome-homelab-stack/scripts
+git clone https://github.com/KS-GG-AI/adguard-homelab.git
+cd adguard-homelab/scripts
 chmod +x setup-node.sh generate-self-signed-cert.sh verify-health.sh
 
 # Executar instalação (informar o IP estático interno)
@@ -167,16 +183,35 @@ sudo ./verify-health.sh 10.0.1.2
 - **Web UI**: Resposta HTTP/2 200/302 ao acessar https://10.0.1.2.
 - **DNS**: Portas 53 (UDP), 443 (DoH) e 853 (DoT & DoQ / HTTP/3) em escuta ativa.
 
+</details>
+
 ---
 
-## Auditoria de Segurança e Conformidade
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Auditoria de Segurança e Conformidade</h2></summary>
 
 - **Zero Segredos Hardcoded**: Todas as senhas, hashes bcrypt e chaves privadas foram sanitizadas e fornecidas como modelos seguros.
 - **Compatível com Redes Isoladas (Air-Gapped)**: Certificados de 20 anos dispensam validações externas ou APIs de renovação a cada 90 dias.
 - **Zero Acoplamento Entre Nós**: Os hosts físicos sobrevivem de forma independente sem quorum compartilhado.
 
+</details>
+
 ---
 
-## Licença
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Licença</h2></summary>
 
 Distribuído sob a [Licença MIT](../LICENSE).
+
+</details>
+
+---
+
+<details>
+<summary><h2 style="display:inline-block; margin:0;">📬 Contato</h2></summary>
+
+Para trabalhos públicos, feedback ou uma olhada mais detalhada na implementação, estes são os pontos de partida mais diretos.
+
+[Perfil do GitHub](https://github.com/KS-GG-AI) · [Repositórios públicos](https://github.com/KS-GG-AI?tab=repositories) · [Abrir uma issue](https://github.com/KS-GG-AI/adguard-homelab/issues/new) · [Código-fonte do perfil](https://github.com/KS-GG-AI/KS-GG-AI)
+
+</details>

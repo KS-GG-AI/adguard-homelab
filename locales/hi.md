@@ -29,7 +29,7 @@
 </p>
 
 <p>
-  <a href="https://github.com/KS-GG-AI/adguardhome-homelab-stack/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
+  <a href="https://github.com/KS-GG-AI/adguard-homelab/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
   <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&labelColor=161126" alt="License: MIT" /></a>
   <a href="https://adguard.com/adguard-home.html"><img src="https://img.shields.io/badge/AdGuard%20Home-v0.107+-green.svg?style=flat-square&labelColor=161126" alt="AdGuard Home" /></a>
   <img src="https://img.shields.io/badge/Protocol-HTTP%2F2%20%7C%20HTTP%2F3%20QUIC-orange.svg?style=flat-square&labelColor=161126" alt="HTTP/2 & HTTP/3" />
@@ -45,7 +45,8 @@
 
 ---
 
-## नेटवर्क आर्किटेक्चर: बाहरी नेटवर्क बनाम आंतरिक नेटवर्क और 2.5G स्विच हब
+<details>
+<summary><h2 style="display:inline-block; margin:0;">नेटवर्क आर्किटेक्चर: बाहरी नेटवर्क बनाम आंतरिक नेटवर्क और 2.5G स्विच हब</h2></summary>
 
 यह आर्किटेक्चर सख्त **भौतिक नेटवर्क विभाजन (Physical Segmentation)** और **शून्य-युग्मन स्टैंडअलोन पॉड अलगाव (Zero-Coupling Pod Isolation)** के सिद्धांतों पर निर्मित है, जो अविश्वसनीय बाहरी इंटरनेट (WAN) को उच्च-बैंडविड्थ निजी LAN से पूरी तरह अलग करता है।
 
@@ -65,9 +66,12 @@
 - **वीएम के बीच उच्च-गति संचार और 0ms DNS रेजोल्यूशन**: अतिथि वीएम (Samba, NFS, SSH, डेटाबेस) 2.5 Gbps की पूरी लाइन गति पर डेटा स्थानांतरित करते हैं। डीएनएस क्वेरी स्थानीय मशीन में लूपबैक (10.0.X.2:53 UDP) द्वारा 0.1ms से कम में हल की जाती हैं।
 - **तत्काल 1-सेकंड ऑटो फेलओवर (Instant Failover)**: अतिथि वीएम कॉन्फ़िगरेशन में प्राथमिक डीएनएस 10.0.X.2 और द्वितीयक सार्वजनिक डीएनएस 1.1.1.1 के साथ options timeout:1 attempts:1 शामिल है। यदि AdGuard बंद हो जाता है, तो ट्रैफ़िक बिना कनेक्शन टूटे 1 सेकंड में बैकअप पर स्विच हो जाता है।
 
+</details>
+
 ---
 
-## सिस्टम आवश्यकताएँ: न्यूनतम बनाम अनुशंसित विनिर्देश
+<details>
+<summary><h2 style="display:inline-block; margin:0;">सिस्टम आवश्यकताएँ: न्यूनतम बनाम अनुशंसित विनिर्देश</h2></summary>
 
 | घटक | न्यूनतम आवश्यकताएँ (मूल परीक्षण वातावरण) | अनुशंसित विनिर्देश (होम प्रोडक्शन) | एंटरप्राइज मल्टी-नोड पॉड (सत्यापित) |
 | :--- | :--- | :--- | :--- |
@@ -79,9 +83,12 @@
 | **हाइपरवाइजर** | Proxmox VE 7+, KVM, ESXi | Proxmox VE 8.x / बेयर मेटल | Proxmox VE 8.x स्वतंत्र पॉड्स |
 | **अतिथि ओएस** | Debian 12 / Ubuntu 22.04 LTS | Debian 12 (कर्नेल 6.1+) | Debian 12 + TCP BBR + 7.5MB UDP |
 
+</details>
+
 ---
 
-## उद्देश्य अनुसार उपयोग परिदृश्य
+<details>
+<summary><h2 style="display:inline-block; margin:0;">उद्देश्य अनुसार उपयोग परिदृश्य</h2></summary>
 
 ### 1. 🏡 स्मार्ट होम और होमलैब नेटवर्क सुरक्षा ढाल
 - स्मार्ट टीवी, स्मार्टफोन, IoT और गेमिंग कंसोल सहित सभी उपकरणों के लिए बिना ऐप इंस्टॉल किए विज्ञापन, ट्रैकिंग और मैलवेयर का केंद्रीकृत ब्लॉक।
@@ -95,9 +102,12 @@
 ### 4. 🔒 अगली पीढ़ी का एन्क्रिप्टेड ट्रांसपोर्ट (DoQ / HTTP/3 और DoT)
 - पुराने प्लेन-टेक्स्ट UDP 53 को DNS-over-QUIC (HTTP/3 UDP 853) और DNS-over-TLS (TCP 853) से बदलें, साथ ही HTTP/2 वेब डैशबोर्ड और 20-वर्षीय SAN प्रमाणपत्र।
 
+</details>
+
 ---
 
-## प्रमुख प्रदर्शन विशेषताएँ
+<details>
+<summary><h2 style="display:inline-block; margin:0;">प्रमुख प्रदर्शन विशेषताएँ</h2></summary>
 
 - **⚡ zstd कम्प्रेशन के साथ ZRAM स्वैप**: swappiness 180 और page-cluster 0 के साथ 1GB संपीड़ित रैम ड्राइव जो डिस्क I/O बाधाओं को समाप्त करती है।
 - **🚀 कर्नेल नेटवर्क स्टैक ट्यूनिंग**: TCP BBR कंजेशन कंट्रोल, FQ शेड्यूलिंग और विस्तारित 7.5MB UDP सॉकेट बफ़र्स (rmem_max/wmem_max) पैकेट ड्रॉप को रोकते हैं।
@@ -105,9 +115,12 @@
 - **🛡️ स्वचालित 20-वर्षीय TLS प्रमाणपत्र**: स्क्रिप्ट द्वारा स्वचालित रूप से 7,300 दिनों (2046 तक) के लिए वैध SAN प्रमाणपत्र उत्पन्न किए जाते हैं।
 - **🔄 पारदर्शी पोर्ट 80 रीडायरेक्ट**: स्थायी iptables NAT नियम जो ब्राउज़र में पोर्ट नंबर डाले बिना पोर्ट 80 को पोर्ट 3000 पर रीडायरेक्ट करता है।
 
+</details>
+
 ---
 
-## निर्देशिका संरचना
+<details>
+<summary><h2 style="display:inline-block; margin:0;">निर्देशिका संरचना</h2></summary>
 
 ```
 ├── configs/
@@ -139,9 +152,12 @@
 └── README.md
 ```
 
+</details>
+
 ---
 
-## त्वरित आरंभ गाइड
+<details>
+<summary><h2 style="display:inline-block; margin:0;">त्वरित आरंभ गाइड</h2></summary>
 
 ### 1. पूर्वापेक्षाएँ
 - नया Debian 12 / 13 या Ubuntu 22.04 / 24.04 वर्चुअल मशीन।
@@ -149,8 +165,8 @@
 
 ### 2. स्वचालित नोड परिनियोजन
 ```bash
-git clone https://github.com/KS-GG-AI/adguardhome-homelab-stack.git
-cd adguardhome-homelab-stack/scripts
+git clone https://github.com/KS-GG-AI/adguard-homelab.git
+cd adguard-homelab/scripts
 chmod +x setup-node.sh generate-self-signed-cert.sh verify-health.sh
 
 # स्थापना निष्पादित करें (आंतरिक स्थिर आईपी निर्दिष्ट करें)
@@ -167,16 +183,35 @@ sudo ./verify-health.sh 10.0.1.2
 - **Web UI**: https://10.0.1.2 पर HTTP/2 200/302 प्रतिक्रिया की पुष्टि करें।
 - **DNS**: पोर्ट 53 (UDP), 443 (DoH) और 853 (DoT & DoQ / HTTP/3) सक्रिय लिसनिंग स्थिति में हैं।
 
+</details>
+
 ---
 
-## सुरक्षा ऑडिट और अनुपालन
+<details>
+<summary><h2 style="display:inline-block; margin:0;">सुरक्षा ऑडिट और अनुपालन</h2></summary>
 
 - **शून्य हार्डकोडेड सीक्रेट्स**: सभी पासवर्ड, bcrypt हैश और निजी कुंजियाँ हटा दी गई हैं और सुरक्षित टेम्प्लेट प्रदान किए गए हैं।
 - **पूर्णतः पृथक नेटवर्क समर्थन (Air-Gapped)**: 20-वर्षीय प्रमाणपत्र बाहरी 90-दिवसीय नवीनीकरण एपीआई के बिना स्थायी रूप से कार्य करते हैं।
 - **शून्य अंतर-नोड युग्मन**: भौतिक होस्ट बिना किसी साझा कोरम के पूरी तरह स्वतंत्र रूप से कार्य करते हैं।
 
+</details>
+
 ---
 
-## लाइसेंस
+<details>
+<summary><h2 style="display:inline-block; margin:0;">लाइसेंस</h2></summary>
 
 [MIT लाइसेंस](../LICENSE) के तहत जारी किया गया।
+
+</details>
+
+---
+
+<details>
+<summary><h2 style="display:inline-block; margin:0;">📬 संपर्क</h2></summary>
+
+सार्वजनिक कार्य, फ़ीडबैक या कार्यान्वयन को करीब से देखने के लिए ये सबसे स्पष्ट शुरुआती बिंदु हैं।
+
+[GitHub प्रोफ़ाइल](https://github.com/KS-GG-AI) · [सार्वजनिक रिपॉजिटरी](https://github.com/KS-GG-AI?tab=repositories) · [समस्या दर्ज करें](https://github.com/KS-GG-AI/adguard-homelab/issues/new) · [प्रोफ़ाइल स्रोत](https://github.com/KS-GG-AI/KS-GG-AI)
+
+</details>

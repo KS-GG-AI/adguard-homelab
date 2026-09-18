@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <p>
   <picture>
@@ -29,7 +29,7 @@
 </p>
 
 <p>
-  <a href="https://github.com/KS-GG-AI/adguardhome-homelab-stack/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
+  <a href="https://github.com/KS-GG-AI/adguard-homelab/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
   <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&labelColor=161126" alt="License: MIT" /></a>
   <a href="https://adguard.com/adguard-home.html"><img src="https://img.shields.io/badge/AdGuard%20Home-v0.107+-green.svg?style=flat-square&labelColor=161126" alt="AdGuard Home" /></a>
   <img src="https://img.shields.io/badge/Protocol-HTTP%2F2%20%7C%20HTTP%2F3%20QUIC-orange.svg?style=flat-square&labelColor=161126" alt="HTTP/2 & HTTP/3" />
@@ -45,7 +45,8 @@
 
 ---
 
-## 네트워크 아키텍처: 외부망 vs 내부망 & 2.5G 스위치 허브
+<details>
+<summary><h2 style="display:inline-block; margin:0;">네트워크 아키텍처: 외부망 vs 내부망 & 2.5G 스위치 허브</h2></summary>
 
 본 스택은 **물리적 망 분리(Physical Segmentation)**와 **무결합 독립 파드 격리(Zero-Coupling Pod Isolation)** 원칙에 따라 설계되어, 신뢰할 수 없는 외부 인터넷 망과 고대역폭 내부 사설망을 완벽히 분리합니다.
 
@@ -72,9 +73,12 @@
 - **초고속 1초 장애 조치 (Instant Failover)**:
   - 게스트 VM의 DNS 설정에 1차로 로컬 AdGuard(`10.0.X.2`), 2차로 공용 DNS(`1.1.1.1`)를 등록하고 `options timeout:1 attempts:1`을 적용하여, AdGuard가 꺼져도 1초 만에 공용 DNS로 자동 전환되어 인터넷 중단이 발생하지 않습니다.
 
+</details>
+
 ---
 
-## 시스템 사양: 최소 사양 vs 권장 사양
+<details>
+<summary><h2 style="display:inline-block; margin:0;">시스템 사양: 최소 사양 vs 권장 사양</h2></summary>
 
 | 구성 항목 | 최소 사양 (단순 테스트 환경) | 권장 사양 (홈랩 실사용 환경) | 프로덕션 멀티 노드 (실제 검증 완료) |
 | :--- | :--- | :--- | :--- |
@@ -86,9 +90,12 @@
 | **하이퍼바이저** | Proxmox VE 7+, KVM, ESXi | Proxmox VE 8.x / 베어메탈 | Proxmox VE 8.x 독립 파드 구성 |
 | **게스트 OS** | Debian 12 / Ubuntu 22.04 LTS | Debian 12 (커널 6.1 이상) | Debian 12 + TCP BBR + 7.5MB UDP 버퍼 |
 
+</details>
+
 ---
 
-## 용도별 사용 가이드
+<details>
+<summary><h2 style="display:inline-block; margin:0;">용도별 사용 가이드</h2></summary>
 
 ### 1. 🏡 스마트 홈 및 홈랩 통합 차단 게이트웨이
 - 전 기기(스마트폰, PC, 스마트TV, IoT 기기 등)에 앱 설치 없이 공유기/DNS 차원에서 광고, 추적기, 악성코드 유포지를 완벽 차단.
@@ -104,9 +111,12 @@
 - 구형 평문 UDP 53 포트 대신 도청 및 위변조가 불가능한 **DNS-over-QUIC(HTTP/3 UDP 853)** 및 **DNS-over-TLS(TCP 853)** 기본 가동.
 - 폐쇄망에서도 갱신 문제없이 동작하는 자동 20년(7,300일) SAN 자체 서명 인증서 및 HTTP/2 웹 관리창(TCP 443) 제공.
 
+</details>
+
 ---
 
-## 주요 핵심 기능
+<details>
+<summary><h2 style="display:inline-block; margin:0;">주요 핵심 기능</h2></summary>
 
 - **⚡ ZRAM zstd 압축 스왑**: 1GB 저용량 VM에서도 디스크 I/O 병목을 제거하는 `swappiness 180`, `page-cluster 0` 기반 1GB 압축 램 드라이브.
 - **🚀 커널 네트워크 최적화**: 대용량 DNS 마이크로버스트 패킷 손실을 방지하는 TCP BBR 혼잡 제어, FQ 스케줄러, 7.5MB UDP 수신/송신 버퍼 확장.
@@ -114,9 +124,12 @@
 - **🛡️ 20년 장기 자체 SSL 인증서**: 외부 도메인이나 90일 주기 갱신 없이 완전한 폐쇄망에서도 영구 동작하는 7,300일 SAN 인증서 자동 발급 스크립트.
 - **🔄 투명 80 포트 리다이렉트**: 포트 번호(:3000) 입력 없이 `http://<IP>`로 접속 가능한 iptables 영구 포워딩.
 
+</details>
+
 ---
 
-## 디렉터리 구조
+<details>
+<summary><h2 style="display:inline-block; margin:0;">디렉터리 구조</h2></summary>
 
 ```
 ├── configs/
@@ -148,9 +161,12 @@
 └── README.md
 ```
 
+</details>
+
 ---
 
-## 빠른 시작 가이드
+<details>
+<summary><h2 style="display:inline-block; margin:0;">빠른 시작 가이드</h2></summary>
 
 ### 1. 사전 요구사항
 - 데비안(Debian) 12/13 또는 우분투(Ubuntu) 22.04/24.04 신규 가상머신.
@@ -160,8 +176,8 @@
 저장소를 클론하고 노드의 고정 IP를 지정하여 스크립트를 실행합니다:
 
 ```bash
-git clone https://github.com/KS-GG-AI/adguardhome-homelab-stack.git
-cd adguardhome-homelab-stack/scripts
+git clone https://github.com/KS-GG-AI/adguard-homelab.git
+cd adguard-homelab/scripts
 chmod +x setup-node.sh generate-self-signed-cert.sh verify-health.sh
 
 # 설치 실행 (지정할 내부 고정 IP 입력)
@@ -181,16 +197,35 @@ sudo ./verify-health.sh 10.0.1.2
 - **Web UI**: `https://10.0.1.2` 접속 시 `HTTP/2 200/302` 응답 확인.
 - **DNS**: 포트 53 (UDP), 포트 443 (DoH), 포트 853 (DoT & DoQ / HTTP/3) 리스닝 확인.
 
+</details>
+
 ---
 
-## 보안 감사 및 무결성 정책
+<details>
+<summary><h2 style="display:inline-block; margin:0;">보안 감사 및 무결성 정책</h2></summary>
 
 - **시크릿 유출 제로**: 모든 비밀번호, bcrypt 해시, 개인키는 레포지토리에서 완전히 제거되었으며 안전한 템플릿으로 제공됩니다.
 - **완전 폐쇄망 지원**: 20년 장기 인증서 발급으로 외부 인증기관 갱신 통신 없이 영구 자립 동작합니다.
 - **노드 간 상호 결합 제로**: 쿼럼 결합 없는 독립 노드 설계로 단일 머신 장애 시 피해가 확산되지 않습니다.
 
+</details>
+
 ---
 
-## 라이선스
+<details>
+<summary><h2 style="display:inline-block; margin:0;">라이선스</h2></summary>
 
 본 프로젝트는 [MIT 라이선스](../LICENSE) 하에 배포됩니다.
+
+</details>
+
+---
+
+<details>
+<summary><h2 style="display:inline-block; margin:0;">📬 연락</h2></summary>
+
+공개 작업, 피드백, 구현 내용을 더 살펴보려면 아래 경로가 가장 빠릅니다.
+
+[GitHub 프로필](https://github.com/KS-GG-AI) · [공개 저장소](https://github.com/KS-GG-AI?tab=repositories) · [이슈 열기](https://github.com/KS-GG-AI/adguard-homelab/issues/new) · [프로필 소스](https://github.com/KS-GG-AI/KS-GG-AI)
+
+</details>

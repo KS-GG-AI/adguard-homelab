@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <p>
   <picture>
@@ -29,7 +29,7 @@
 </p>
 
 <p>
-  <a href="https://github.com/KS-GG-AI/adguardhome-homelab-stack/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
+  <a href="https://github.com/KS-GG-AI/adguard-homelab/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&labelColor=161126" alt="License: MIT" /></a>
   <a href="https://adguard.com/adguard-home.html"><img src="https://img.shields.io/badge/AdGuard%20Home-v0.107+-green.svg?style=flat-square&labelColor=161126" alt="AdGuard Home" /></a>
   <img src="https://img.shields.io/badge/Protocol-HTTP%2F2%20%7C%20HTTP%2F3%20QUIC-orange.svg?style=flat-square&labelColor=161126" alt="HTTP/2 & HTTP/3" />
@@ -45,7 +45,8 @@
 
 ---
 
-## Architecture: External vs. Internal Networks & 2.5G Switch Hub
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Architecture: External vs. Internal Networks & 2.5G Switch Hub</h2></summary>
 
 This stack is engineered around strict **physical segmentation** and **zero-coupling pod resilience**, separating untrusted external WAN uplinks from high-bandwidth internal LAN traffic.
 
@@ -72,9 +73,12 @@ This stack is engineered around strict **physical segmentation** and **zero-coup
 - **Instant 1-Second Failover**:
   - Guest VM network configurations include primary resolver `10.0.X.2` and secondary resolver `1.1.1.1` with `options timeout:1 attempts:1`. If the local AdGuard appliance is stopped for maintenance, guest traffic seamlessly fails over to public resolvers within 1 second without dropping active connections.
 
+</details>
+
 ---
 
-## System Specifications: Minimum vs. Recommended
+<details>
+<summary><h2 style="display:inline-block; margin:0;">System Specifications: Minimum vs. Recommended</h2></summary>
 
 | Specification | Minimum Requirements (Basic Testbed) | Recommended Specifications (Home Production) | Multi-Node Enterprise Pod (Tested) |
 | :--- | :--- | :--- | :--- |
@@ -86,9 +90,12 @@ This stack is engineered around strict **physical segmentation** and **zero-coup
 | **Hypervisor** | Proxmox VE 7+, KVM, ESXi | Proxmox VE 8.x / Bare Metal | Proxmox VE 8.x Standalone Pods |
 | **Guest OS** | Debian 12 / Ubuntu 22.04 LTS | Debian 12 (Kernel 6.1+) | Debian 12 + TCP BBR + 7.5MB UDP |
 
+</details>
+
 ---
 
-## Usage Scenarios by Purpose
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Usage Scenarios by Purpose</h2></summary>
 
 ### 1. 🏡 Smart Home & Homelab Network Shield
 - Centralized, agentless ad-blocking, telemetry prevention, and anti-malware filtering for all home devices including smart TVs, mobile phones, IoT sensors, and gaming consoles.
@@ -104,9 +111,12 @@ This stack is engineered around strict **physical segmentation** and **zero-coup
 - Replaces legacy plain-text UDP port 53 queries with encrypted **DNS-over-QUIC (HTTP/3 UDP 853)** and **DNS-over-TLS (TCP 853)**.
 - Secure HTTP/2 Web dashboard on port 443 backed by automated 20-year SAN self-signed certificates for air-gapped homelabs.
 
+</details>
+
 ---
 
-## Key Performance Features
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Key Performance Features</h2></summary>
 
 - **⚡ ZRAM with zstd Compression**: 1GB compressed RAM drive with `swappiness 180` and `page-cluster 0` eliminates disk I/O bottlenecks on low-memory VMs.
 - **🚀 Kernel Network Tuning**: TCP BBR congestion control, FQ packet queueing, and expanded 7.5MB UDP socket buffers (`rmem_max`/`wmem_max`) prevent microburst packet drops.
@@ -114,9 +124,12 @@ This stack is engineered around strict **physical segmentation** and **zero-coup
 - **🛡️ 20-Year Automated TLS**: Scripts generate 7,300-day SAN certificates valid through 2046 with zero external certificate authority renewal dependencies.
 - **🔄 Transparent Port 80 Redirect**: Persistent iptables NAT rule redirects standard HTTP port 80 to 3000 without requiring port numbers in browsers.
 
+</details>
+
 ---
 
-## Directory Structure
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Directory Structure</h2></summary>
 
 ```
 ├── configs/
@@ -148,9 +161,12 @@ This stack is engineered around strict **physical segmentation** and **zero-coup
 └── README.md
 ```
 
+</details>
+
 ---
 
-## Quick Start Guide
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Quick Start Guide</h2></summary>
 
 ### 1. Prerequisites
 - Fresh Debian 12 / 13 or Ubuntu 22.04 / 24.04 VM.
@@ -160,8 +176,8 @@ This stack is engineered around strict **physical segmentation** and **zero-coup
 Clone the repository and run the setup script with your desired static IP:
 
 ```bash
-git clone https://github.com/KS-GG-AI/adguardhome-homelab-stack.git
-cd adguardhome-homelab-stack/scripts
+git clone https://github.com/KS-GG-AI/adguard-homelab.git
+cd adguard-homelab/scripts
 chmod +x setup-node.sh generate-self-signed-cert.sh verify-health.sh
 
 # Run setup (specify your internal IP)
@@ -181,16 +197,35 @@ Expected verification:
 - **Web UI**: `HTTP/2 200/302` response on `https://10.0.1.2`.
 - **DNS**: Port 53 (UDP), Port 443 (DoH), Port 853 (DoT & DoQ / HTTP/3).
 
+</details>
+
 ---
 
-## Security Audit & Compliance
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Security Audit & Compliance</h2></summary>
 
 - **Zero Hardcoded Secrets**: All passwords, bcrypt hashes, and private keys are removed and replaced with production templates.
 - **Air-Gapped Capable**: 20-year certificates require zero external validation or 90-day renewal APIs.
 - **Zero Inter-Node Coupling**: Physical hosts survive independently without shared quorum state.
 
+</details>
+
 ---
 
-## License
+<details>
+<summary><h2 style="display:inline-block; margin:0;">License</h2></summary>
 
 Released under the [MIT License](LICENSE).
+
+</details>
+
+---
+
+<details>
+<summary><h2 style="display:inline-block; margin:0;">📬 Contact</h2></summary>
+
+For public work, feedback, or a closer look at the implementation, these are the clearest starting points.
+
+[GitHub profile](https://github.com/KS-GG-AI) · [Public repositories](https://github.com/KS-GG-AI?tab=repositories) · [Open an issue](https://github.com/KS-GG-AI/adguard-homelab/issues/new) · [Profile source](https://github.com/KS-GG-AI/KS-GG-AI)
+
+</details>

@@ -29,7 +29,7 @@
 </p>
 
 <p>
-  <a href="https://github.com/KS-GG-AI/adguardhome-homelab-stack/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
+  <a href="https://github.com/KS-GG-AI/adguard-homelab/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
   <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&labelColor=161126" alt="License: MIT" /></a>
   <a href="https://adguard.com/adguard-home.html"><img src="https://img.shields.io/badge/AdGuard%20Home-v0.107+-green.svg?style=flat-square&labelColor=161126" alt="AdGuard Home" /></a>
   <img src="https://img.shields.io/badge/Protocol-HTTP%2F2%20%7C%20HTTP%2F3%20QUIC-orange.svg?style=flat-square&labelColor=161126" alt="HTTP/2 & HTTP/3" />
@@ -45,7 +45,8 @@
 
 ---
 
-## 网络架构：外网 vs 内网 & 2.5G 交换机枢纽
+<details>
+<summary><h2 style="display:inline-block; margin:0;">网络架构：外网 vs 内网 & 2.5G 交换机枢纽</h2></summary>
 
 本架构遵循**物理网络分流 (Physical Segmentation)**与**零耦合独立节点隔离 (Zero-Coupling Pod Isolation)**原则，彻底隔绝不可信外部网络与高带宽内网私有通信。
 
@@ -65,9 +66,12 @@
 - **虚拟机高速内网与 0ms DNS 解析**: 虚拟机间的大容量文件传输 (Samba, NFS, SSH) 跑满 2.5Gbps 线速；DNS 查询直接在同主机内以 0.1ms 回环极速完成。
 - **极速 1 秒自动故障切换**: 客户端配置主 DNS (10.0.X.2) 与备用公共 DNS (1.1.1.1)，并启用 options timeout:1 attempts:1，AdGuard 停机时 1 秒无缝切至备用。
 
+</details>
+
 ---
 
-## 硬件规格要求：最低 vs 推荐配置
+<details>
+<summary><h2 style="display:inline-block; margin:0;">硬件规格要求：最低 vs 推荐配置</h2></summary>
 
 | 规格组件 | 最低配置要求 (基础测试环境) | 推荐生产规格 (家庭核心实验室) | 企业级多节点规格 (实测验证) |
 | :--- | :--- | :--- | :--- |
@@ -79,9 +83,12 @@
 | **虚拟化平台** | Proxmox VE 7+, KVM, ESXi | Proxmox VE 8.x / 裸金属 | Proxmox VE 8.x 独立 Pod 架构 |
 | **系统镜像** | Debian 12 / Ubuntu 22.04 LTS | Debian 12 (Kernel 6.1+) | Debian 12 + TCP BBR + 7.5MB UDP |
 
+</details>
+
 ---
 
-## 典型应用场景
+<details>
+<summary><h2 style="display:inline-block; margin:0;">典型应用场景</h2></summary>
 
 ### 🏡 全屋智能家居与全域广告拦截
 - 无需在电视、手机、IoT 设备上安装客户端，在网关和 DNS 层面统合拦截全网广告与恶意追踪。
@@ -95,9 +102,12 @@
 ### 🔒 次世代 DoQ / HTTP/3 企业安全 DNS
 - 抛弃传统明文 UDP 53，默认启用 DNS-over-QUIC (853 UDP) 与 HTTP/2 Web UI，配套 20 年长效 SAN 证书。
 
+</details>
+
 ---
 
-## 核心性能特性
+<details>
+<summary><h2 style="display:inline-block; margin:0;">核心性能特性</h2></summary>
 
 - **⚡ ZRAM zstd 内存压缩交换**: 1GB 压缩 RAM 驱动器，配合 swappiness 180 与 page-cluster 0 消除磁盘 I/O 瓶颈。
 - **🚀 内核网络协议栈调优**: 启用 TCP BBR、FQ 队列及 7.5MB UDP 套接字缓冲区，稳定吞吐高并发 DNS 微突发。
@@ -105,9 +115,12 @@
 - **🛡️ 20 年自动化自签证书**: 脚本自动生成有效期至 2046 年的 7,300 天 SAN 证书，零外部依赖，完全适配离线网络。
 - **🔄 80 端口透明重定向**: 通过持久化 iptables NAT 规则自动将 80 端口导流至 3000。
 
+</details>
+
 ---
 
-## 目录组织结构
+<details>
+<summary><h2 style="display:inline-block; margin:0;">目录组织结构</h2></summary>
 
 ```
 ├── configs/
@@ -139,9 +152,12 @@
 └── README.md
 ```
 
+</details>
+
 ---
 
-## 快速上手指南
+<details>
+<summary><h2 style="display:inline-block; margin:0;">快速上手指南</h2></summary>
 
 ### 1. 前置环境准备
 - 全新 Debian 12 / 13 或 Ubuntu 22.04 / 24.04 虚拟机。
@@ -149,8 +165,8 @@
 
 ### 2. 自动化节点安装部署
 ```bash
-git clone https://github.com/KS-GG-AI/adguardhome-homelab-stack.git
-cd adguardhome-homelab-stack/scripts
+git clone https://github.com/KS-GG-AI/adguard-homelab.git
+cd adguard-homelab/scripts
 chmod +x setup-node.sh generate-self-signed-cert.sh verify-health.sh
 
 # 执行安装脚本（输入指定节点的静态 IP）
@@ -167,16 +183,35 @@ sudo ./verify-health.sh 10.0.1.2
 - **Web UI**: https://10.0.1.2 正常返回 HTTP/2 200/302 响应。
 - **DNS 监听**: 端口 53 (UDP), 443 (DoH), 853 (DoT & DoQ / HTTP/3) 均处于正常监听状态。
 
+</details>
+
 ---
 
-## 安全审计与合规声明
+<details>
+<summary><h2 style="display:inline-block; margin:0;">安全审计与合规声明</h2></summary>
 
 - **零硬编码机密**: 所有密码、bcrypt 散列与私钥均已脱敏，仅提供配置模板。
 - **纯内网离线支持**: 20 年长效证书无需任何外部 90 天证书续签 API 通信。
 - **零跨节点耦合**: 单台宿主机重启绝不影响其他主机的 DNS 解析能力。
 
+</details>
+
 ---
 
-## 开源许可证
+<details>
+<summary><h2 style="display:inline-block; margin:0;">开源许可证</h2></summary>
 
 本项目在 [MIT 许可证](../LICENSE) 下开源发布。
+
+</details>
+
+---
+
+<details>
+<summary><h2 style="display:inline-block; margin:0;">📬 联系</h2></summary>
+
+对于公开工作、反馈或深入了解实现细节，这些是最直接的入口。
+
+[GitHub 个人主页](https://github.com/KS-GG-AI) · [公开仓库](https://github.com/KS-GG-AI?tab=repositories) · [提交 Issue](https://github.com/KS-GG-AI/adguard-homelab/issues/new) · [个人主页源码](https://github.com/KS-GG-AI/KS-GG-AI)
+
+</details>

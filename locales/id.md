@@ -29,7 +29,7 @@
 </p>
 
 <p>
-  <a href="https://github.com/KS-GG-AI/adguardhome-homelab-stack/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
+  <a href="https://github.com/KS-GG-AI/adguard-homelab/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
   <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&labelColor=161126" alt="License: MIT" /></a>
   <a href="https://adguard.com/adguard-home.html"><img src="https://img.shields.io/badge/AdGuard%20Home-v0.107+-green.svg?style=flat-square&labelColor=161126" alt="AdGuard Home" /></a>
   <img src="https://img.shields.io/badge/Protocol-HTTP%2F2%20%7C%20HTTP%2F3%20QUIC-orange.svg?style=flat-square&labelColor=161126" alt="HTTP/2 & HTTP/3" />
@@ -45,7 +45,8 @@
 
 ---
 
-## Arsitektur Jaringan: Jaringan Eksternal vs Internal & Switch Hub 2.5G
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Arsitektur Jaringan: Jaringan Eksternal vs Internal & Switch Hub 2.5G</h2></summary>
 
 Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan **ketahanan pod independen tanpa kopling (Zero-Coupling Pod Isolation)**, memisahkan lalu lintas uplink WAN eksternal yang tidak tepercaya dari lalu lintas LAN internal berkecepatan tinggi.
 
@@ -65,9 +66,12 @@ Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan 
 - **Komunikasi VM Kecepatan Tinggi & DNS 0 md**: Transfer file berkapasitas besar antar-VM tamu (Samba, NFS, SSH, database) berjalan pada kecepatan penuh 2.5 Gbps. Kueri DNS diselesaikan secara lokal di host yang sama melalui loopback (10.0.X.2:53 UDP) dalam waktu kurang dari 0.1 md.
 - **Failover Otomatis Instan 1 Detik (Instant Failover)**: Konfigurasi jaringan VM menyertakan DNS primer 10.0.X.2 dan DNS publik sekunder 1.1.1.1 dengan opsi options timeout:1 attempts:1. Jika AdGuard mati, lalu lintas beralih otomatis dalam 1 detik tanpa pemutusan koneksi.
 
+</details>
+
 ---
 
-## Spesifikasi Sistem: Persyaratan Minimum vs Rekomendasi
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Spesifikasi Sistem: Persyaratan Minimum vs Rekomendasi</h2></summary>
 
 | Komponen | Persyaratan Minimum (Lingkungan Uji Coba) | Spesifikasi Rekomendasi (Produksi Homelab) | Pod Perusahaan Multi-Node (Teruji) |
 | :--- | :--- | :--- | :--- |
@@ -79,9 +83,12 @@ Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan 
 | **Hypervisor** | Proxmox VE 7+, KVM, ESXi | Proxmox VE 8.x / Bare Metal | Pod Mandiri Proxmox VE 8.x |
 | **Sistem Operasi Tamu** | Debian 12 / Ubuntu 22.04 LTS | Debian 12 (Kernel 6.1+) | Debian 12 + TCP BBR + 7.5MB UDP |
 
+</details>
+
 ---
 
-## Skenario Penggunaan Berdasarkan Kebutuhan
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Skenario Penggunaan Berdasarkan Kebutuhan</h2></summary>
 
 ### 1. 🏡 Pelindung Jaringan Smart Home & Homelab
 - Pemblokiran iklan, telemetri, dan malware terpusat tanpa perlu memasang aplikasi di setiap perangkat (Smart TV, ponsel, sensor IoT, dan konsol game).
@@ -95,9 +102,12 @@ Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan 
 ### 4. 🔒 Transportasi Terenkripsi Generasi Baru (DoQ / HTTP/3 & DoT)
 - Menggantikan protokol UDP 53 teks biasa dengan DNS-over-QUIC (HTTP/3 UDP 853) dan DNS-over-TLS (TCP 853), dilengkapi dasbor web HTTP/2 dan sertifikat SAN 20 tahun.
 
+</details>
+
 ---
 
-## Fitur Performa Utama
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Fitur Performa Utama</h2></summary>
 
 - **⚡ Swap Terkompresi ZRAM dengan zstd**: Drive RAM terkompresi 1GB dengan swappiness 180 dan page-cluster 0 yang meniadakan hambatan I/O disk.
 - **🚀 Penyetelan Jaringan Kernel Linux**: Kontrol kemacetan TCP BBR, penjadwalan antrean FQ, dan buffer soket UDP yang diperluas hingga 7.5MB (rmem_max/wmem_max) untuk menangani lonjakan kueri.
@@ -105,9 +115,12 @@ Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan 
 - **🛡️ Sertifikat TLS Otomatis Berdurasi 20 Tahun**: Skrip otomatis menghasilkan sertifikat SAN 7.300 hari hingga tahun 2046 tanpa memerlukan perpanjangan dari CA publik eksternal.
 - **🔄 Pengalihan Port 80 Transparan**: Aturan NAT iptables persisten mengalihkan lalu lintas port HTTP 80 ke 3000 tanpa perlu mengetikkan nomor port di browser.
 
+</details>
+
 ---
 
-## Struktur Direktori
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Struktur Direktori</h2></summary>
 
 ```
 ├── configs/
@@ -139,9 +152,12 @@ Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan 
 └── README.md
 ```
 
+</details>
+
 ---
 
-## Panduan Memulai Cepat
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Panduan Memulai Cepat</h2></summary>
 
 ### 1. Prasyarat
 - VM baru dengan Debian 12 / 13 atau Ubuntu 22.04 / 24.04.
@@ -149,8 +165,8 @@ Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan 
 
 ### 2. Instalasi Node Otomatis
 ```bash
-git clone https://github.com/KS-GG-AI/adguardhome-homelab-stack.git
-cd adguardhome-homelab-stack/scripts
+git clone https://github.com/KS-GG-AI/adguard-homelab.git
+cd adguard-homelab/scripts
 chmod +x setup-node.sh generate-self-signed-cert.sh verify-health.sh
 
 # Jalankan instalasi (tentukan alamat IP statis internal)
@@ -167,16 +183,35 @@ sudo ./verify-health.sh 10.0.1.2
 - **Web UI**: Mendapatkan respons HTTP/2 200/302 saat mengakses https://10.0.1.2.
 - **DNS**: Port 53 (UDP), 443 (DoH), dan 853 (DoT & DoQ / HTTP/3) berada dalam status mendengarkan aktif.
 
+</details>
+
 ---
 
-## Audit Keamanan dan Kepatuhan
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Audit Keamanan dan Kepatuhan</h2></summary>
 
 - **Nol Rahasia Hardcode**: Semua kata sandi, hash bcrypt, dan kunci privat telah dibersihkan dan disediakan sebagai templat aman.
 - **Mendukung Jaringan Terisolasi (Air-Gapped)**: Sertifikat 20 tahun berfungsi penuh tanpa memerlukan API perpanjangan berkala 90 hari.
 - **Nol Ketergantungan Antar-Node**: Host fisik beroperasi secara mandiri tanpa memerlukan mekanisme kuorum bersama.
 
+</details>
+
 ---
 
-## Lisensi
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Lisensi</h2></summary>
 
 Dirilis di bawah naungan [Lisensi MIT](../LICENSE).
+
+</details>
+
+---
+
+<details>
+<summary><h2 style="display:inline-block; margin:0;">📬 Kontak</h2></summary>
+
+Untuk pekerjaan publik, masukan, atau melihat implementasi lebih dekat, tautan berikut adalah titik awal yang paling jelas.
+
+[Profil GitHub](https://github.com/KS-GG-AI) · [Repositori publik](https://github.com/KS-GG-AI?tab=repositories) · [Buka issue](https://github.com/KS-GG-AI/adguard-homelab/issues/new) · [Sumber profil](https://github.com/KS-GG-AI/KS-GG-AI)
+
+</details>

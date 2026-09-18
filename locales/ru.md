@@ -29,7 +29,7 @@
 </p>
 
 <p>
-  <a href="https://github.com/KS-GG-AI/adguardhome-homelab-stack/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
+  <a href="https://github.com/KS-GG-AI/adguard-homelab/releases"><img src="https://img.shields.io/badge/Release-v1.0.1-A78BFA?style=flat-square&logo=github&labelColor=161126" alt="Release" /></a>
   <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&labelColor=161126" alt="License: MIT" /></a>
   <a href="https://adguard.com/adguard-home.html"><img src="https://img.shields.io/badge/AdGuard%20Home-v0.107+-green.svg?style=flat-square&labelColor=161126" alt="AdGuard Home" /></a>
   <img src="https://img.shields.io/badge/Protocol-HTTP%2F2%20%7C%20HTTP%2F3%20QUIC-orange.svg?style=flat-square&labelColor=161126" alt="HTTP/2 & HTTP/3" />
@@ -45,7 +45,8 @@
 
 ---
 
-## Сетевая архитектура: Внешняя сеть vs Внутренняя сеть & Коммутатор 2.5G
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Сетевая архитектура: Внешняя сеть vs Внутренняя сеть & Коммутатор 2.5G</h2></summary>
 
 Данная архитектура построена на принципах **строгой физической сегментации** и **полной изоляции независимых узлов (Zero-Coupling Pod Isolation)**, надежно отделяя ненадежный внешний интернет (WAN) от высокоскоростного внутреннего трафика (LAN).
 
@@ -65,9 +66,12 @@
 - **Высокоскоростная связь между ВМ и мгновенный DNS за 0 мс**: Передача больших файлов между гостевыми ВМ (Samba, NFS, SSH, СУБД) использует полную скорость 2.5 Гбит/с. Запросы DNS обрабатываются локально на том же сервере (10.0.X.2:53 UDP) с задержкой loopback менее 0.1 мс.
 - **Мгновенное переключение при сбое за 1 секунду (Instant Failover)**: В сетевых настройках гостевых ВМ задан основной DNS 10.0.X.2 и резервный публичный DNS 1.1.1.1 с параметрами options timeout:1 attempts:1. При остановке AdGuard трафик за 1 секунду переключается на резерв без разрыва соединений.
 
+</details>
+
 ---
 
-## Системные требования: Минимальные vs Рекомендуемые
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Системные требования: Минимальные vs Рекомендуемые</h2></summary>
 
 | Компонент | Минимальные требования (Базовый тест) | Рекомендуемые требования (Homelab Production) | Корпоративный мульти-узел (Протестировано) |
 | :--- | :--- | :--- | :--- |
@@ -79,9 +83,12 @@
 | **Гипервизор** | Proxmox VE 7+, KVM, ESXi | Proxmox VE 8.x / Bare Metal | Автономные поды Proxmox VE 8.x |
 | **ОС гостя** | Debian 12 / Ubuntu 22.04 LTS | Debian 12 (Ядро 6.1+) | Debian 12 + TCP BBR + 7.5МБ UDP |
 
+</details>
+
 ---
 
-## Сценарии использования по назначению
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Сценарии использования по назначению</h2></summary>
 
 ### 1. 🏡 Защитный шлюз для Умного дома и Homelab
 - Централизованная блокировка рекламы, телеметрии и вредоносного ПО без установки приложений для Smart TV, смартфонов, IoT-устройств и консолей.
@@ -95,9 +102,12 @@
 ### 4. 🔒 Зашифрованный транспорт нового поколения (DoQ / HTTP/3 и DoT)
 - Отказ от открытого протокола UDP 53 в пользу DNS-over-QUIC (HTTP/3 UDP 853) и DNS-over-TLS (TCP 853) с веб-панелью HTTP/2 и сертификатами SAN на 20 лет.
 
+</details>
+
 ---
 
-## Ключевые особенности производительности
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Ключевые особенности производительности</h2></summary>
 
 - **⚡ Сжатый swap ZRAM с алгоритмом zstd**: 1 ГБ сжатый RAM-диск с swappiness 180 и page-cluster 0 устраняет задержки дискового ввода-вывода.
 - **🚀 Оптимизация сетевого стека ядра**: Контроль перегрузки TCP BBR, планировщик FQ и увеличенные буферы сокетов UDP до 7.5 МБ (rmem_max/wmem_max) для обработки пиковых нагрузок.
@@ -105,9 +115,12 @@
 - **🛡️ Автоматические сертификаты TLS со сроком действия 20 лет**: Скрипт генерирует SAN-сертификаты со сроком действия 7 300 дней до 2046 года без необходимости внешнего продления.
 - **🔄 Прозрачный редирект с порта 80**: Постоянное правило iptables NAT перенаправляет порт HTTP 80 на порт 3000, избавляя от необходимости указывать порт в браузере.
 
+</details>
+
 ---
 
-## Структура каталогов
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Структура каталогов</h2></summary>
 
 ```
 ├── configs/
@@ -139,9 +152,12 @@
 └── README.md
 ```
 
+</details>
+
 ---
 
-## Руководство по быстрому старту
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Руководство по быстрому старту</h2></summary>
 
 ### 1. Предварительные требования
 - Чистая виртуальная машина Debian 12 / 13 или Ubuntu 22.04 / 24.04.
@@ -149,8 +165,8 @@
 
 ### 2. Автоматизированное развертывание узла
 ```bash
-git clone https://github.com/KS-GG-AI/adguardhome-homelab-stack.git
-cd adguardhome-homelab-stack/scripts
+git clone https://github.com/KS-GG-AI/adguard-homelab.git
+cd adguard-homelab/scripts
 chmod +x setup-node.sh generate-self-signed-cert.sh verify-health.sh
 
 # Запуск скрипта установки (с указанием внутреннего статического IP)
@@ -167,16 +183,35 @@ sudo ./verify-health.sh 10.0.1.2
 - **Web UI**: Получение ответа HTTP/2 200/302 при переходе на https://10.0.1.2.
 - **DNS**: Порты 53 (UDP), 443 (DoH) и 853 (DoT & DoQ / HTTP/3) находятся в активном режиме прослушивания.
 
+</details>
+
 ---
 
-## Аудит безопасности и соответствие стандартам
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Аудит безопасности и соответствие стандартам</h2></summary>
 
 - **Ноль жестко заданных секретов**: Все пароли, хэши bcrypt и закрытые ключи удалены и заменены безопасными шаблонами конфигурации.
 - **Готовность к полностью изолированным сетям (Air-Gapped)**: Сертификаты на 20 лет работают без подключения к внешним API продления.
 - **Отсутствие связности между узлами**: Каждый физический сервер функционирует автономно без общего кворума.
 
+</details>
+
 ---
 
-## Лицензия
+<details>
+<summary><h2 style="display:inline-block; margin:0;">Лицензия</h2></summary>
 
 Распространяется под лицензией [MIT](../LICENSE).
+
+</details>
+
+---
+
+<details>
+<summary><h2 style="display:inline-block; margin:0;">📬 Контакты</h2></summary>
+
+Для вопросов по публичным проектам, обратной связи или детального ознакомления с реализацией лучше всего использовать эти ссылки.
+
+[Профиль GitHub](https://github.com/KS-GG-AI) · [Публичные репозитории](https://github.com/KS-GG-AI?tab=repositories) · [Создать issue](https://github.com/KS-GG-AI/adguard-homelab/issues/new) · [Исходный код профиля](https://github.com/KS-GG-AI/KS-GG-AI)
+
+</details>
