@@ -1,81 +1,112 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" fill="none" role="img">
   <defs>
+    <!-- Deep Homelab Dark Background Gradient -->
     <linearGradient id="topo-bg" x1="0" y1="0" x2="1100" y2="720" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0b0f19"/>
-      <stop offset="50%" stop-color="#111827"/>
-      <stop offset="100%" stop-color="#0f172a"/>
+      <stop offset="0%" stop-color="#080c16"/>
+      <stop offset="50%" stop-color="#0e1424"/>
+      <stop offset="100%" stop-color="#0a0e1a"/>
     </linearGradient>
-    <linearGradient id="pod-grad" x1="0" y1="0" x2="0" y2="300" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#1e293b"/>
-      <stop offset="100%" stop-color="#0f172a"/>
+
+    <!-- Node Pod Deep Gradient -->
+    <linearGradient id="pod-grad" x1="0" y1="0" x2="0" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#111728"/>
+      <stop offset="100%" stop-color="#090d18"/>
     </linearGradient>
+
+    <!-- Soft shadow filter -->
     <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Subtle Glow filter for LEDs -->
+    <filter id="led-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
 
-  <rect width="1100" height="720" rx="16" fill="url(#topo-bg)" stroke="#334155" stroke-width="1.5"/>
+  <!-- Canvas Base Frame -->
+  <rect width="1100" height="720" rx="16" fill="url(#topo-bg)" stroke="#1e293b" stroke-width="1.2"/>
 
-  <!-- Top Title -->
+  <!-- Top Title Header -->
   <text x="40" y="44" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="800">Arquitectura de Red Homelab y Topología de Pods Aislados</text>
   <text x="40" y="68" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Segmentación Doble NIC · Conmutación Dedicada 2.5G · Cero Acoplamiento DNS</text>
 
   <!-- SECTION 1: EXTERNAL NETWORK (WAN) -->
   <g transform="translate(40, 95)">
-    <rect width="1020" height="90" rx="12" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5" filter="url(#shadow)"/>
-    <rect x="18" y="16" width="140" height="24" rx="6" fill="#4338ca"/>
-    <text x="26" y="32" fill="#e0e7ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">RED EXTERNA WAN</text>
+    <rect width="1020" height="90" rx="12" fill="#0d111d" stroke="#252f48" stroke-width="1.2" filter="url(#shadow)"/>
+    
+    <!-- Tag Badge -->
+    <rect x="18" y="16" width="144" height="24" rx="6" fill="#181e33" stroke="#313d66" stroke-width="1"/>
+    <circle cx="28" cy="28" r="3.5" fill="#818cf8" filter="url(#led-glow)"/>
+    <text x="38" y="32" fill="#c7d2fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">RED EXTERNA WAN</text>
 
-    <text x="18" y="62" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700">Gateway ISP y Resolutores Cifrados Upstream</text>
-    <text x="18" y="79" fill="#c7d2fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Gateway: 192.168.1.1 · Solicitudes Paralelas · Caché Optimista</text>
+    <!-- Description -->
+    <text x="18" y="62" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="700">Gateway ISP y Resolutores Cifrados Upstream</text>
+    <text x="18" y="79" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5">Gateway: 192.168.1.1 · Solicitudes Paralelas · Caché Optimista</text>
 
+    <!-- Upstream Resolver Cards (Muted Slate Backgrounds) -->
     <g transform="translate(540, 24)">
-      <rect x="0" y="0" width="150" height="42" rx="8" fill="#312e81" stroke="#818cf8"/>
-      <text x="14" y="18" fill="#a5b4fc" font-family="sans-serif" font-size="10" font-weight="600">Cloudflare DoH</text>
-      <text x="14" y="34" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="700">1.1.1.1:443</text>
+      <rect x="0" y="0" width="150" height="42" rx="8" fill="#13182b" stroke="#252f4a" stroke-width="1"/>
+      <text x="14" y="18" fill="#94a3b8" font-family="sans-serif" font-size="10" font-weight="600">Cloudflare DoH</text>
+      <text x="14" y="34" fill="#e2e8f0" font-family="sans-serif" font-size="11.5" font-weight="700">1.1.1.1:443</text>
     </g>
     <g transform="translate(700, 24)">
-      <rect x="0" y="0" width="145" height="42" rx="8" fill="#312e81" stroke="#818cf8"/>
-      <text x="14" y="18" fill="#a5b4fc" font-family="sans-serif" font-size="10" font-weight="600">Quad9 DoT</text>
-      <text x="14" y="34" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="700">9.9.9.9:853</text>
+      <rect x="0" y="0" width="145" height="42" rx="8" fill="#13182b" stroke="#252f4a" stroke-width="1"/>
+      <text x="14" y="18" fill="#94a3b8" font-family="sans-serif" font-size="10" font-weight="600">Quad9 DoT</text>
+      <text x="14" y="34" fill="#e2e8f0" font-family="sans-serif" font-size="11.5" font-weight="700">9.9.9.9:853</text>
     </g>
     <g transform="translate(855, 24)">
-      <rect x="0" y="0" width="150" height="42" rx="8" fill="#312e81" stroke="#818cf8"/>
-      <text x="14" y="18" fill="#a5b4fc" font-family="sans-serif" font-size="10" font-weight="600">Google DoH</text>
-      <text x="14" y="34" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="700">8.8.8.8:443</text>
+      <rect x="0" y="0" width="150" height="42" rx="8" fill="#13182b" stroke="#252f4a" stroke-width="1"/>
+      <text x="14" y="18" fill="#94a3b8" font-family="sans-serif" font-size="10" font-weight="600">Google DoH</text>
+      <text x="14" y="34" fill="#e2e8f0" font-family="sans-serif" font-size="11.5" font-weight="700">8.8.8.8:443</text>
     </g>
   </g>
 
-  <line x1="550" y1="185" x2="550" y2="215" stroke="#6366f1" stroke-width="2.5" stroke-dasharray="4 4"/>
+  <!-- WAN to Switch Trunk Line (Subtle dash) -->
+  <line x1="550" y1="185" x2="550" y2="215" stroke="#3b82f6" stroke-width="1.8" stroke-dasharray="4 3" stroke-opacity="0.6"/>
 
-  <!-- SECTION 2: 2.5G SWITCH HUB (BACKBONE) -->
+  <!-- SECTION 2: 2.5G SWITCH HUB (BACKBONE CHASSIS) -->
   <g transform="translate(40, 215)">
-    <rect width="1020" height="52" rx="10" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5" filter="url(#shadow)"/>
-    <circle cx="28" cy="26" r="6" fill="#38bdf8"/>
-    <text x="44" y="32" fill="#f0f9ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800">Switch Hub de 2.5Gbps (Troncal Físico Interconectado)</text>
-    <rect x="660" y="13" width="165" height="26" rx="6" fill="#0369a1"/>
-    <text x="670" y="30" fill="#e0f2fe" font-family="sans-serif" font-size="10" font-weight="700">Doble NIC: vmbr0 (WAN)</text>
-    <rect x="835" y="13" width="170" height="26" rx="6" fill="#075985"/>
-    <text x="845" y="30" fill="#e0f2fe" font-family="sans-serif" font-size="10" font-weight="700">Doble NIC: vmbr1 (LAN 2.5G)</text>
+    <rect width="1020" height="52" rx="10" fill="#0d1527" stroke="#1d2f4d" stroke-width="1.2" filter="url(#shadow)"/>
+    <circle cx="28" cy="26" r="5" fill="#38bdf8" filter="url(#led-glow)"/>
+    <text x="44" y="32" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">Switch Hub de 2.5Gbps (Troncal Físico Interconectado)</text>
+    
+    <!-- NIC Port Badges (Dark Slate Glass) -->
+    <rect x="660" y="13" width="165" height="26" rx="6" fill="#141e33" stroke="#233554" stroke-width="1"/>
+    <text x="672" y="30" fill="#7dd3fc" font-family="sans-serif" font-size="10" font-weight="600">Doble NIC: vmbr0 (WAN)</text>
+    <rect x="835" y="13" width="170" height="26" rx="6" fill="#141e33" stroke="#233554" stroke-width="1"/>
+    <text x="847" y="30" fill="#7dd3fc" font-family="sans-serif" font-size="10" font-weight="600">Doble NIC: vmbr1 (LAN 2.5G)</text>
   </g>
 
-  <line x1="167" y1="267" x2="167" y2="300" stroke="#38bdf8" stroke-width="2"/>
-  <line x1="422" y1="267" x2="422" y2="300" stroke="#38bdf8" stroke-width="2"/>
-  <line x1="677" y1="267" x2="677" y2="300" stroke="#38bdf8" stroke-width="2"/>
-  <line x1="932" y1="267" x2="932" y2="300" stroke="#38bdf8" stroke-width="2"/>
+  <!-- Trunk Lines to 4 Nodes -->
+  <line x1="167" y1="267" x2="167" y2="300" stroke="#1e3a5f" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <line x1="422" y1="267" x2="422" y2="300" stroke="#1e3a5f" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <line x1="677" y1="267" x2="677" y2="300" stroke="#1e3a5f" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <line x1="932" y1="267" x2="932" y2="300" stroke="#1e3a5f" stroke-width="1.5" stroke-dasharray="4 2"/>
 
   <!-- SECTION 3: 4 PHYSICAL NODES -->
   
     <g transform="translate(40, 300)">
-      <rect width="245" height="380" rx="12" fill="url(#pod-grad)" stroke="#0ea5e9" stroke-width="1.8" filter="url(#shadow)"/>
-      <rect x="0" y="0" width="245" height="36" rx="12" fill="#0284c7"/>
-      <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="800">Node 1: myu1 (10.0.1.1)</text>
+      <!-- Node Outer Frame (Subtle dark border, no glaring cyan) -->
+      <rect width="245" height="380" rx="12" fill="url(#pod-grad)" stroke="#1e293b" stroke-width="1.2" filter="url(#shadow)"/>
+      
+      <!-- Node Header Bar (Dark slate with cyan LED) -->
+      <rect x="0" y="0" width="245" height="36" rx="12" fill="#131b2e" stroke="#1e293b" stroke-width="1"/>
+      <circle cx="18" cy="18" r="4.5" fill="#38bdf8" filter="url(#led-glow)"/>
+      <text x="30" y="22" fill="#f8fafc" font-family="sans-serif" font-size="11.5" font-weight="700">Node 1: myu1 (10.0.1.1)</text>
 
+      <!-- VM 3000: AdGuard Home Card -->
       <g transform="translate(12, 48)">
-        <rect width="221" height="150" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
-        <rect x="8" y="8" width="205" height="22" rx="4" fill="#0369a1"/>
-        <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="700">VM 3000: Adguard-Home</text>
-        <text x="14" y="46" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="800">IP: 10.0.1.2</text>
+        <rect width="221" height="150" rx="8" fill="#0c1220" stroke="#1e2c45" stroke-width="1"/>
+        <!-- VM Header Pill -->
+        <rect x="8" y="8" width="205" height="22" rx="4" fill="#141e33" stroke="#223352" stroke-width="0.8"/>
+        <text x="14" y="23" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="700">VM 3000: Adguard-Home</text>
+        
+        <text x="14" y="46" fill="#38bdf8" font-family="sans-serif" font-size="11.5" font-weight="700">IP: 10.0.1.2</text>
         <text x="14" y="66" fill="#94a3b8" font-family="sans-serif" font-size="10">🔒 HTTP/2 Web: <tspan fill="#f1f5f9">Port 443</tspan></text>
         <text x="14" y="82" fill="#94a3b8" font-family="sans-serif" font-size="10">⚡ HTTP/3 DoQ: <tspan fill="#f1f5f9">853 UDP</tspan></text>
         <text x="14" y="98" fill="#94a3b8" font-family="sans-serif" font-size="10">🛡️ ByeDPI :1080 · PAC :8088</text>
@@ -83,30 +114,39 @@
         <text x="14" y="130" fill="#34d399" font-family="sans-serif" font-size="10" font-weight="600">✓ 20-Year SAN SSL (2046)</text>
       </g>
 
+      <!-- Guest Virtual Machines Card -->
       <g transform="translate(12, 210)">
-        <rect width="221" height="80" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">Máquinas Virtuales Invitadas</text>
-        <text x="14" y="44" fill="#e2e8f0" font-family="sans-serif" font-size="11">💻 win10 (10.0.1.10)</text>
-        <text x="14" y="62" fill="#38bdf8" font-family="sans-serif" font-size="10">DNS: 10.0.1.2 / 1.1.1.1</text>
+        <rect width="221" height="80" rx="8" fill="#0a0f1a" stroke="#1a2436" stroke-width="1"/>
+        <text x="14" y="24" fill="#cbd5e1" font-family="sans-serif" font-size="10.5" font-weight="700">Máquinas Virtuales Invitadas</text>
+        <text x="14" y="44" fill="#94a3b8" font-family="sans-serif" font-size="10.5">💻 win10 (10.0.1.10)</text>
+        <text x="14" y="62" fill="#7dd3fc" font-family="sans-serif" font-size="9.5">DNS: 10.0.1.2 / 1.1.1.1</text>
       </g>
 
+      <!-- Failover & Loopback Status Card (Muted Emerald) -->
       <g transform="translate(12, 300)">
-        <rect width="221" height="66" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Conmutación por error en 1s</text>
-        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms Resolución loopback local</text>
-        <text x="10" y="52" fill="#cbd5e1" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
+        <rect width="221" height="66" rx="6" fill="#071512" stroke="#0e3a2e" stroke-width="1"/>
+        <text x="10" y="20" fill="#34d399" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Conmutación por error en 1s</text>
+        <text x="10" y="36" fill="#86efac" font-family="sans-serif" font-size="9" fill-opacity="0.8">0.1ms Resolución loopback local</text>
+        <text x="10" y="52" fill="#64748b" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
       </g>
     </g>
     <g transform="translate(295, 300)">
-      <rect width="245" height="380" rx="12" fill="url(#pod-grad)" stroke="#0ea5e9" stroke-width="1.8" filter="url(#shadow)"/>
-      <rect x="0" y="0" width="245" height="36" rx="12" fill="#0284c7"/>
-      <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="800">Node 2: myu2 (10.0.2.1)</text>
+      <!-- Node Outer Frame (Subtle dark border, no glaring cyan) -->
+      <rect width="245" height="380" rx="12" fill="url(#pod-grad)" stroke="#1e293b" stroke-width="1.2" filter="url(#shadow)"/>
+      
+      <!-- Node Header Bar (Dark slate with cyan LED) -->
+      <rect x="0" y="0" width="245" height="36" rx="12" fill="#131b2e" stroke="#1e293b" stroke-width="1"/>
+      <circle cx="18" cy="18" r="4.5" fill="#38bdf8" filter="url(#led-glow)"/>
+      <text x="30" y="22" fill="#f8fafc" font-family="sans-serif" font-size="11.5" font-weight="700">Node 2: myu2 (10.0.2.1)</text>
 
+      <!-- VM 3000: AdGuard Home Card -->
       <g transform="translate(12, 48)">
-        <rect width="221" height="150" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
-        <rect x="8" y="8" width="205" height="22" rx="4" fill="#0369a1"/>
-        <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="700">VM 3000: Adguard-Home</text>
-        <text x="14" y="46" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="800">IP: 10.0.2.2</text>
+        <rect width="221" height="150" rx="8" fill="#0c1220" stroke="#1e2c45" stroke-width="1"/>
+        <!-- VM Header Pill -->
+        <rect x="8" y="8" width="205" height="22" rx="4" fill="#141e33" stroke="#223352" stroke-width="0.8"/>
+        <text x="14" y="23" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="700">VM 3000: Adguard-Home</text>
+        
+        <text x="14" y="46" fill="#38bdf8" font-family="sans-serif" font-size="11.5" font-weight="700">IP: 10.0.2.2</text>
         <text x="14" y="66" fill="#94a3b8" font-family="sans-serif" font-size="10">🔒 HTTP/2 Web: <tspan fill="#f1f5f9">Port 443</tspan></text>
         <text x="14" y="82" fill="#94a3b8" font-family="sans-serif" font-size="10">⚡ HTTP/3 DoQ: <tspan fill="#f1f5f9">853 UDP</tspan></text>
         <text x="14" y="98" fill="#94a3b8" font-family="sans-serif" font-size="10">🛡️ ByeDPI :1080 · PAC :8088</text>
@@ -114,30 +154,39 @@
         <text x="14" y="130" fill="#34d399" font-family="sans-serif" font-size="10" font-weight="600">✓ 20-Year SAN SSL (2046)</text>
       </g>
 
+      <!-- Guest Virtual Machines Card -->
       <g transform="translate(12, 210)">
-        <rect width="221" height="80" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">Máquinas Virtuales Invitadas</text>
-        <text x="14" y="44" fill="#e2e8f0" font-family="sans-serif" font-size="11">💻 debian-dev01 (10.0.2.10)</text>
-        <text x="14" y="62" fill="#38bdf8" font-family="sans-serif" font-size="10">DNS: 10.0.2.2 / 1.1.1.1</text>
+        <rect width="221" height="80" rx="8" fill="#0a0f1a" stroke="#1a2436" stroke-width="1"/>
+        <text x="14" y="24" fill="#cbd5e1" font-family="sans-serif" font-size="10.5" font-weight="700">Máquinas Virtuales Invitadas</text>
+        <text x="14" y="44" fill="#94a3b8" font-family="sans-serif" font-size="10.5">💻 debian-dev01 (10.0.2.10)</text>
+        <text x="14" y="62" fill="#7dd3fc" font-family="sans-serif" font-size="9.5">DNS: 10.0.2.2 / 1.1.1.1</text>
       </g>
 
+      <!-- Failover & Loopback Status Card (Muted Emerald) -->
       <g transform="translate(12, 300)">
-        <rect width="221" height="66" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Conmutación por error en 1s</text>
-        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms Resolución loopback local</text>
-        <text x="10" y="52" fill="#cbd5e1" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
+        <rect width="221" height="66" rx="6" fill="#071512" stroke="#0e3a2e" stroke-width="1"/>
+        <text x="10" y="20" fill="#34d399" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Conmutación por error en 1s</text>
+        <text x="10" y="36" fill="#86efac" font-family="sans-serif" font-size="9" fill-opacity="0.8">0.1ms Resolución loopback local</text>
+        <text x="10" y="52" fill="#64748b" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
       </g>
     </g>
     <g transform="translate(550, 300)">
-      <rect width="245" height="380" rx="12" fill="url(#pod-grad)" stroke="#0ea5e9" stroke-width="1.8" filter="url(#shadow)"/>
-      <rect x="0" y="0" width="245" height="36" rx="12" fill="#0284c7"/>
-      <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="800">Node 3: myu3 (10.0.3.1)</text>
+      <!-- Node Outer Frame (Subtle dark border, no glaring cyan) -->
+      <rect width="245" height="380" rx="12" fill="url(#pod-grad)" stroke="#1e293b" stroke-width="1.2" filter="url(#shadow)"/>
+      
+      <!-- Node Header Bar (Dark slate with cyan LED) -->
+      <rect x="0" y="0" width="245" height="36" rx="12" fill="#131b2e" stroke="#1e293b" stroke-width="1"/>
+      <circle cx="18" cy="18" r="4.5" fill="#38bdf8" filter="url(#led-glow)"/>
+      <text x="30" y="22" fill="#f8fafc" font-family="sans-serif" font-size="11.5" font-weight="700">Node 3: myu3 (10.0.3.1)</text>
 
+      <!-- VM 3000: AdGuard Home Card -->
       <g transform="translate(12, 48)">
-        <rect width="221" height="150" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
-        <rect x="8" y="8" width="205" height="22" rx="4" fill="#0369a1"/>
-        <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="700">VM 3000: Adguard-Home</text>
-        <text x="14" y="46" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="800">IP: 10.0.3.2</text>
+        <rect width="221" height="150" rx="8" fill="#0c1220" stroke="#1e2c45" stroke-width="1"/>
+        <!-- VM Header Pill -->
+        <rect x="8" y="8" width="205" height="22" rx="4" fill="#141e33" stroke="#223352" stroke-width="0.8"/>
+        <text x="14" y="23" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="700">VM 3000: Adguard-Home</text>
+        
+        <text x="14" y="46" fill="#38bdf8" font-family="sans-serif" font-size="11.5" font-weight="700">IP: 10.0.3.2</text>
         <text x="14" y="66" fill="#94a3b8" font-family="sans-serif" font-size="10">🔒 HTTP/2 Web: <tspan fill="#f1f5f9">Port 443</tspan></text>
         <text x="14" y="82" fill="#94a3b8" font-family="sans-serif" font-size="10">⚡ HTTP/3 DoQ: <tspan fill="#f1f5f9">853 UDP</tspan></text>
         <text x="14" y="98" fill="#94a3b8" font-family="sans-serif" font-size="10">🛡️ ByeDPI :1080 · PAC :8088</text>
@@ -145,30 +194,39 @@
         <text x="14" y="130" fill="#34d399" font-family="sans-serif" font-size="10" font-weight="600">✓ 20-Year SAN SSL (2046)</text>
       </g>
 
+      <!-- Guest Virtual Machines Card -->
       <g transform="translate(12, 210)">
-        <rect width="221" height="80" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">Máquinas Virtuales Invitadas</text>
-        <text x="14" y="44" fill="#e2e8f0" font-family="sans-serif" font-size="11">💻 storage01 (10.0.3.10)</text>
-        <text x="14" y="62" fill="#38bdf8" font-family="sans-serif" font-size="10">DNS: 10.0.3.2 / 1.1.1.1</text>
+        <rect width="221" height="80" rx="8" fill="#0a0f1a" stroke="#1a2436" stroke-width="1"/>
+        <text x="14" y="24" fill="#cbd5e1" font-family="sans-serif" font-size="10.5" font-weight="700">Máquinas Virtuales Invitadas</text>
+        <text x="14" y="44" fill="#94a3b8" font-family="sans-serif" font-size="10.5">💻 storage01 (10.0.3.10)</text>
+        <text x="14" y="62" fill="#7dd3fc" font-family="sans-serif" font-size="9.5">DNS: 10.0.3.2 / 1.1.1.1</text>
       </g>
 
+      <!-- Failover & Loopback Status Card (Muted Emerald) -->
       <g transform="translate(12, 300)">
-        <rect width="221" height="66" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Conmutación por error en 1s</text>
-        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms Resolución loopback local</text>
-        <text x="10" y="52" fill="#cbd5e1" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
+        <rect width="221" height="66" rx="6" fill="#071512" stroke="#0e3a2e" stroke-width="1"/>
+        <text x="10" y="20" fill="#34d399" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Conmutación por error en 1s</text>
+        <text x="10" y="36" fill="#86efac" font-family="sans-serif" font-size="9" fill-opacity="0.8">0.1ms Resolución loopback local</text>
+        <text x="10" y="52" fill="#64748b" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
       </g>
     </g>
     <g transform="translate(805, 300)">
-      <rect width="245" height="380" rx="12" fill="url(#pod-grad)" stroke="#0ea5e9" stroke-width="1.8" filter="url(#shadow)"/>
-      <rect x="0" y="0" width="245" height="36" rx="12" fill="#0284c7"/>
-      <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="800">Node 4: myu4 (10.0.4.1)</text>
+      <!-- Node Outer Frame (Subtle dark border, no glaring cyan) -->
+      <rect width="245" height="380" rx="12" fill="url(#pod-grad)" stroke="#1e293b" stroke-width="1.2" filter="url(#shadow)"/>
+      
+      <!-- Node Header Bar (Dark slate with cyan LED) -->
+      <rect x="0" y="0" width="245" height="36" rx="12" fill="#131b2e" stroke="#1e293b" stroke-width="1"/>
+      <circle cx="18" cy="18" r="4.5" fill="#38bdf8" filter="url(#led-glow)"/>
+      <text x="30" y="22" fill="#f8fafc" font-family="sans-serif" font-size="11.5" font-weight="700">Node 4: myu4 (10.0.4.1)</text>
 
+      <!-- VM 3000: AdGuard Home Card -->
       <g transform="translate(12, 48)">
-        <rect width="221" height="150" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
-        <rect x="8" y="8" width="205" height="22" rx="4" fill="#0369a1"/>
-        <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="700">VM 3000: Adguard-Home</text>
-        <text x="14" y="46" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="800">IP: 10.0.4.2</text>
+        <rect width="221" height="150" rx="8" fill="#0c1220" stroke="#1e2c45" stroke-width="1"/>
+        <!-- VM Header Pill -->
+        <rect x="8" y="8" width="205" height="22" rx="4" fill="#141e33" stroke="#223352" stroke-width="0.8"/>
+        <text x="14" y="23" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="700">VM 3000: Adguard-Home</text>
+        
+        <text x="14" y="46" fill="#38bdf8" font-family="sans-serif" font-size="11.5" font-weight="700">IP: 10.0.4.2</text>
         <text x="14" y="66" fill="#94a3b8" font-family="sans-serif" font-size="10">🔒 HTTP/2 Web: <tspan fill="#f1f5f9">Port 443</tspan></text>
         <text x="14" y="82" fill="#94a3b8" font-family="sans-serif" font-size="10">⚡ HTTP/3 DoQ: <tspan fill="#f1f5f9">853 UDP</tspan></text>
         <text x="14" y="98" fill="#94a3b8" font-family="sans-serif" font-size="10">🛡️ ByeDPI :1080 · PAC :8088</text>
@@ -176,18 +234,20 @@
         <text x="14" y="130" fill="#34d399" font-family="sans-serif" font-size="10" font-weight="600">✓ 20-Year SAN SSL (2046)</text>
       </g>
 
+      <!-- Guest Virtual Machines Card -->
       <g transform="translate(12, 210)">
-        <rect width="221" height="80" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">Máquinas Virtuales Invitadas</text>
-        <text x="14" y="44" fill="#e2e8f0" font-family="sans-serif" font-size="11">💻 mail01 (10.0.4.10)</text>
-        <text x="14" y="62" fill="#38bdf8" font-family="sans-serif" font-size="10">DNS: 10.0.4.2 / 1.1.1.1</text>
+        <rect width="221" height="80" rx="8" fill="#0a0f1a" stroke="#1a2436" stroke-width="1"/>
+        <text x="14" y="24" fill="#cbd5e1" font-family="sans-serif" font-size="10.5" font-weight="700">Máquinas Virtuales Invitadas</text>
+        <text x="14" y="44" fill="#94a3b8" font-family="sans-serif" font-size="10.5">💻 mail01 (10.0.4.10)</text>
+        <text x="14" y="62" fill="#7dd3fc" font-family="sans-serif" font-size="9.5">DNS: 10.0.4.2 / 1.1.1.1</text>
       </g>
 
+      <!-- Failover & Loopback Status Card (Muted Emerald) -->
       <g transform="translate(12, 300)">
-        <rect width="221" height="66" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Conmutación por error en 1s</text>
-        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms Resolución loopback local</text>
-        <text x="10" y="52" fill="#cbd5e1" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
+        <rect width="221" height="66" rx="6" fill="#071512" stroke="#0e3a2e" stroke-width="1"/>
+        <text x="10" y="20" fill="#34d399" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Conmutación por error en 1s</text>
+        <text x="10" y="36" fill="#86efac" font-family="sans-serif" font-size="9" fill-opacity="0.8">0.1ms Resolución loopback local</text>
+        <text x="10" y="52" fill="#64748b" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
       </g>
     </g>
 </svg>
