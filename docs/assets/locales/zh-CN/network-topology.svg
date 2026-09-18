@@ -17,17 +17,17 @@
   <rect width="1100" height="720" rx="16" fill="url(#topo-bg)" stroke="#334155" stroke-width="1.5"/>
 
   <!-- Top Title -->
-  <text x="40" y="44" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="800">Homelab Network Architecture & Standalone Pod Topology</text>
-  <text x="40" y="68" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Dual-NIC Segmentation · 2.5Gbps Dedicated Switching · Zero Cross-Node DNS Coupling</text>
+  <text x="40" y="44" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="800">家庭实验室网络架构与独立 Pod 拓扑图</text>
+  <text x="40" y="68" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">双网卡物理隔离 · 2.5Gbps 专用交换网络 · 零跨节点 DNS 耦合</text>
 
   <!-- SECTION 1: EXTERNAL NETWORK (WAN) -->
   <g transform="translate(40, 95)">
     <rect width="1020" height="90" rx="12" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5" filter="url(#shadow)"/>
     <rect x="18" y="16" width="140" height="24" rx="6" fill="#4338ca"/>
-    <text x="26" y="32" fill="#e0e7ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">EXTERNAL WAN</text>
+    <text x="26" y="32" fill="#e0e7ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">外部网络 (WAN)</text>
 
-    <text x="18" y="62" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700">ISP Gateway & Encrypted Upstream Resolvers</text>
-    <text x="18" y="79" fill="#c7d2fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Gateway: 192.168.1.1 · Parallel Requests · Optimistic Cache</text>
+    <text x="18" y="62" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700">ISP 网关与加密上行解析器</text>
+    <text x="18" y="79" fill="#c7d2fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">网关: 192.168.1.1 · 并发查询 · 乐观缓存</text>
 
     <g transform="translate(540, 24)">
       <rect x="0" y="0" width="150" height="42" rx="8" fill="#312e81" stroke="#818cf8"/>
@@ -52,11 +52,11 @@
   <g transform="translate(40, 215)">
     <rect width="1020" height="52" rx="10" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5" filter="url(#shadow)"/>
     <circle cx="28" cy="26" r="6" fill="#38bdf8"/>
-    <text x="44" y="32" fill="#f0f9ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800">2.5Gbps High-Speed Switch Hub (Physical Backbone Interconnect)</text>
+    <text x="44" y="32" fill="#f0f9ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800">2.5Gbps 高速交换机枢纽 (物理核心主干)</text>
     <rect x="660" y="13" width="165" height="26" rx="6" fill="#0369a1"/>
-    <text x="670" y="30" fill="#e0f2fe" font-family="sans-serif" font-size="10" font-weight="700">Dual-NIC: vmbr0 (WAN)</text>
+    <text x="670" y="30" fill="#e0f2fe" font-family="sans-serif" font-size="10" font-weight="700">双网卡: vmbr0 (外网 WAN)</text>
     <rect x="835" y="13" width="170" height="26" rx="6" fill="#075985"/>
-    <text x="845" y="30" fill="#e0f2fe" font-family="sans-serif" font-size="10" font-weight="700">Dual-NIC: vmbr1 (2.5G LAN)</text>
+    <text x="845" y="30" fill="#e0f2fe" font-family="sans-serif" font-size="10" font-weight="700">双网卡: vmbr1 (2.5G 内网)</text>
   </g>
 
   <line x1="167" y1="267" x2="167" y2="300" stroke="#38bdf8" stroke-width="2"/>
@@ -85,15 +85,15 @@
 
       <g transform="translate(12, 210)">
         <rect width="221" height="80" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">Guest Virtual Machines</text>
+        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">内部客户虚拟机</text>
         <text x="14" y="44" fill="#e2e8f0" font-family="sans-serif" font-size="11">💻 win10 (10.0.1.10)</text>
         <text x="14" y="62" fill="#38bdf8" font-family="sans-serif" font-size="10">DNS: 10.0.1.2 / 1.1.1.1</text>
       </g>
 
       <g transform="translate(12, 300)">
         <rect width="221" height="66" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Instant 1-Second Fast Failover</text>
-        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms Local Loopback Resolution</text>
+        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ 1秒极速自动故障切换</text>
+        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms 本地回环极速响应</text>
         <text x="10" y="52" fill="#cbd5e1" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
       </g>
     </g>
@@ -116,15 +116,15 @@
 
       <g transform="translate(12, 210)">
         <rect width="221" height="80" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">Guest Virtual Machines</text>
+        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">内部客户虚拟机</text>
         <text x="14" y="44" fill="#e2e8f0" font-family="sans-serif" font-size="11">💻 debian-dev01 (10.0.2.10)</text>
         <text x="14" y="62" fill="#38bdf8" font-family="sans-serif" font-size="10">DNS: 10.0.2.2 / 1.1.1.1</text>
       </g>
 
       <g transform="translate(12, 300)">
         <rect width="221" height="66" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Instant 1-Second Fast Failover</text>
-        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms Local Loopback Resolution</text>
+        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ 1秒极速自动故障切换</text>
+        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms 本地回环极速响应</text>
         <text x="10" y="52" fill="#cbd5e1" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
       </g>
     </g>
@@ -147,15 +147,15 @@
 
       <g transform="translate(12, 210)">
         <rect width="221" height="80" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">Guest Virtual Machines</text>
+        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">内部客户虚拟机</text>
         <text x="14" y="44" fill="#e2e8f0" font-family="sans-serif" font-size="11">💻 storage01 (10.0.3.10)</text>
         <text x="14" y="62" fill="#38bdf8" font-family="sans-serif" font-size="10">DNS: 10.0.3.2 / 1.1.1.1</text>
       </g>
 
       <g transform="translate(12, 300)">
         <rect width="221" height="66" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Instant 1-Second Fast Failover</text>
-        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms Local Loopback Resolution</text>
+        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ 1秒极速自动故障切换</text>
+        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms 本地回环极速响应</text>
         <text x="10" y="52" fill="#cbd5e1" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
       </g>
     </g>
@@ -178,15 +178,15 @@
 
       <g transform="translate(12, 210)">
         <rect width="221" height="80" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">Guest Virtual Machines</text>
+        <text x="14" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="700">内部客户虚拟机</text>
         <text x="14" y="44" fill="#e2e8f0" font-family="sans-serif" font-size="11">💻 mail01 (10.0.4.10)</text>
         <text x="14" y="62" fill="#38bdf8" font-family="sans-serif" font-size="10">DNS: 10.0.4.2 / 1.1.1.1</text>
       </g>
 
       <g transform="translate(12, 300)">
         <rect width="221" height="66" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ Instant 1-Second Fast Failover</text>
-        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms Local Loopback Resolution</text>
+        <text x="10" y="20" fill="#4ade80" font-family="sans-serif" font-size="9.5" font-weight="700">✓ 1秒极速自动故障切换</text>
+        <text x="10" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">0.1ms 本地回环极速响应</text>
         <text x="10" y="52" fill="#cbd5e1" font-family="sans-serif" font-size="9">options timeout:1 attempts:1</text>
       </g>
     </g>

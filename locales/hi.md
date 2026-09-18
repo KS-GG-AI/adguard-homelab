@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="../docs/assets/banner.svg" alt="AdGuard Home: उच्च-प्रदर्शन होमलैब क्लस्टर स्टैक" width="100%" />
+  <img src="../docs/assets/locales/hi/banner.svg" alt="AdGuard Home: उच्च-प्रदर्शन होमलैब क्लस्टर स्टैक" width="100%" />
 </picture>
 
 # AdGuard Home: उच्च-प्रदर्शन होमलैब क्लस्टर स्टैक
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
+  <img src="../docs/assets/locales/hi/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
 </p>
 
 </div>
@@ -45,7 +45,7 @@
 यह आर्किटेक्चर सख्त **भौतिक नेटवर्क विभाजन (Physical Segmentation)** और **शून्य-युग्मन स्टैंडअलोन पॉड अलगाव (Zero-Coupling Pod Isolation)** के सिद्धांतों पर निर्मित है, जो अविश्वसनीय बाहरी इंटरनेट (WAN) को उच्च-बैंडविड्थ निजी LAN से पूरी तरह अलग करता है।
 
 <p align="center">
-  <img src="../docs/assets/network-topology.svg" alt="Network Topology" width="100%" />
+  <img src="../docs/assets/locales/hi/network-topology.svg" alt="Network Topology" width="100%" />
 </p>
 
 ### 1. 🌐 बाहरी नेटवर्क (WAN / अपलिंक)
@@ -66,7 +66,7 @@
 
 | घटक | न्यूनतम आवश्यकताएँ (मूल परीक्षण वातावरण) | अनुशंसित विनिर्देश (होम प्रोडक्शन) | एंटरप्राइज मल्टी-नोड पॉड (सत्यापित) |
 | :--- | :--- | :--- | :--- |
-| **सीपीयू (CPU)** | 1 vCPU (x86_64 या ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (भौतिक होस्ट) |
+| **सीपीयू (CPU)** | 1 vCPU (x86_64 या ARM64) | 1 ~ 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (भौतिक होस्ट) |
 | **मेमोरी (RAM)** | 512 MB (ZRAM सक्षम) | 1024 MB ~ 2048 MB | 16 GB+ होस्ट (प्रति वीएम 1024 MB समर्पित) |
 | **मेमोरी ऑप्टिमाइज़ेशन** | मानक डिस्क स्वैप | ZRAM (zstd, swappiness 180) | ZRAM 1GB + page-cluster 0 |
 | **स्टोरेज (डिस्क)** | 8 GB वर्चुअल डिस्क | 16 GB NVMe SSD | PCIe NVMe उच्च-गति स्टोरेज |
@@ -140,7 +140,7 @@
 
 ### 1. पूर्वापेक्षाएँ
 - नया Debian 12 / 13 या Ubuntu 22.04 / 24.04 वर्चुअल मशीन।
-- अनुशंसित विनिर्देश: 1 vCPU, 1024 MB RAM, 16 GB डिस्क, ड्यूल एनआईसी (WAN + आंतरिक 2.5G)।
+- अनुशंसित विनिर्देश: 1 ~ 2 vCPU, 1024 MB RAM, 16 GB डिस्क, ड्यूल एनआईसी (WAN + आंतरिक 2.5G)।
 
 ### 2. स्वचालित नोड परिनियोजन
 ```bash

@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="../docs/assets/banner.svg" alt="AdGuard Home : Stack Haute Performance pour Homelab" width="100%" />
+  <img src="../docs/assets/locales/fr/banner.svg" alt="AdGuard Home : Stack Haute Performance pour Homelab" width="100%" />
 </picture>
 
 # AdGuard Home : Stack Haute Performance pour Homelab
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
+  <img src="../docs/assets/locales/fr/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
 </p>
 
 </div>
@@ -45,7 +45,7 @@
 Cette architecture repose sur une **segmentation physique** rigoureuse et une **résilience en pods indépendants sans couplage (Zero-Coupling Pod Isolation)**, isolant hermétiquement le WAN externe non sécurisé du trafic LAN privé haute vitesse.
 
 <p align="center">
-  <img src="../docs/assets/network-topology.svg" alt="Network Topology" width="100%" />
+  <img src="../docs/assets/locales/fr/network-topology.svg" alt="Network Topology" width="100%" />
 </p>
 
 ### 1. 🌐 Réseau Externe (WAN / Liaison Montante)
@@ -66,7 +66,7 @@ Cette architecture repose sur une **segmentation physique** rigoureuse et une **
 
 | Composant | Configuration Minimale (Test Basique) | Spécifications Recommandées (Production Homelab) | Pod Entreprise Multi-Nœuds (Validé) |
 | :--- | :--- | :--- | :--- |
-| **Processeur (CPU)** | 1 vCPU (x86_64 ou ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Hôte physique) |
+| **Processeur (CPU)** | 1 vCPU (x86_64 ou ARM64) | 1 ~ 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Hôte physique) |
 | **Mémoire (RAM)** | 512 Mo (avec ZRAM) | 1024 Mo ~ 2048 Mo | 16 Go+ Hôte (1024 Mo dédiés par VM) |
 | **Optimisation Mémoire** | Swap standard sur disque | ZRAM (zstd, swappiness 180) | ZRAM 1Go + page-cluster 0 |
 | **Stockage (Disque)** | Disque Virtuel 8 Go | 16 Go SSD NVMe | Stockage NVMe PCIe haute performance |

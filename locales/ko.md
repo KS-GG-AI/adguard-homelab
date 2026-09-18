@@ -1,7 +1,7 @@
 ﻿<div align="center">
 
 <picture>
-  <img src="../docs/assets/banner.svg" alt="AdGuard Home 고성능 홈랩 클러스터 스택" width="100%" />
+  <img src="../docs/assets/locales/ko/banner.svg" alt="AdGuard Home 고성능 홈랩 클러스터 스택" width="100%" />
 </picture>
 
 # AdGuard Home 고성능 홈랩 클러스터 스택
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/dns-flow.gif" alt="실시간 DNS 질의 처리 및 0ms 초고속 응답 흐름" width="92%" />
+  <img src="../docs/assets/locales/ko/dns-flow.gif" alt="실시간 DNS 질의 처리 및 0ms 초고속 응답 흐름" width="92%" />
 </p>
 
 </div>
@@ -45,7 +45,7 @@
 본 스택은 **물리적 망 분리(Physical Segmentation)**와 **무결합 독립 파드 격리(Zero-Coupling Pod Isolation)** 원칙에 따라 설계되어, 신뢰할 수 없는 외부 인터넷 망과 고대역폭 내부 사설망을 완벽히 분리합니다.
 
 <p align="center">
-  <img src="../docs/assets/network-topology.svg" alt="멀티 노드 네트워크 토폴로지 구조도" width="100%" />
+  <img src="../docs/assets/locales/ko/network-topology.svg" alt="멀티 노드 네트워크 토폴로지 구조도" width="100%" />
 </p>
 
 ### 1. 🌐 외부망 (WAN / Uplink)
@@ -73,7 +73,7 @@
 
 | 구성 항목 | 최소 사양 (단순 테스트 환경) | 권장 사양 (홈랩 실사용 환경) | 프로덕션 멀티 노드 (실제 검증 완료) |
 | :--- | :--- | :--- | :--- |
-| **CPU** | 1 vCPU (x86_64 / ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (호스트) |
+| **CPU** | 1 vCPU (x86_64 / ARM64) | 1~2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (호스트) |
 | **메모리 (RAM)** | 512 MB (ZRAM 활성화) | 1024 MB ~ 2048 MB | 16 GB+ 호스트 (VM당 1024 MB 할당) |
 | **메모리 최적화** | 일반 디스크 스왑 | ZRAM (zstd, swappiness 180) | ZRAM 1GB + `page-cluster 0` |
 | **스토리지 (디스크)**| 8 GB 가상 디스크 | 16 GB NVMe SSD | PCIe NVMe 고속 SSD |
@@ -149,7 +149,7 @@
 
 ### 1. 사전 요구사항
 - 데비안(Debian) 12/13 또는 우분투(Ubuntu) 22.04/24.04 신규 가상머신.
-- 권장 규격: 1 vCPU, 1024 MB RAM, 16 GB 디스크, 듀얼 NIC(WAN + 내부 2.5G).
+- 권장 규격: 1~2 vCPU, 1024 MB RAM, 16 GB 디스크, 듀얼 NIC(WAN + 내부 2.5G).
 
 ### 2. 자동 노드 배포
 저장소를 클론하고 노드의 고정 IP를 지정하여 스크립트를 실행합니다:

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" fill="none" role="img" aria-labelledby="title desc">
-  <title id="title">AdGuard Home High-Performance Stack</title>
-  <desc id="desc">Hardened Standalone Multi-Node Architecture · Fast Failover · Zero-SPOF</desc>
+  <title id="title">AdGuard Home: Stack de Alto Rendimiento</title>
+  <desc id="desc">Arquitectura multinodo aislada endurecida · Conmutación rápida · Zero-SPOF</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="360" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#0c0919"/>
@@ -60,12 +60,12 @@
     <g transform="translate(200, 70)">
       <rect x="0" y="0" width="370" height="28" rx="14" fill="#1E1B4B" stroke="#4C1D95" stroke-width="1"/>
       <circle cx="16" cy="14" r="5" fill="#A78BFA" filter="url(#glow)"/>
-      <text x="32" y="19" fill="#DDD6FE" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1">ENTERPRISE HOMELAB APPLIANCE</text>
+      <text x="32" y="19" fill="#DDD6FE" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1">DISPOSITIVO HOMELAB EMPRESARIAL</text>
 
-      <text x="0" y="72" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="36" font-weight="900" letter-spacing="0.5">AdGuard Home High-Performance Stack</text>
+      <text x="0" y="72" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="36" font-weight="900" letter-spacing="0.5">AdGuard Home: Stack de Alto Rendimiento</text>
 
       <text x="0" y="106" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="500">
-        Hardened Standalone Multi-Node Architecture · Fast Failover · Zero-SPOF
+        Arquitectura multinodo aislada endurecida · Conmutación rápida · Zero-SPOF
       </text>
 
       <!-- Tech Feature Chips -->
@@ -80,11 +80,11 @@
         </g>
         <g transform="translate(334, 0)">
           <rect width="160" height="32" rx="8" fill="#0C2924" stroke="#059669" stroke-width="1.2"/>
-          <text x="14" y="20" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">🔒 20-Year TLS SAN</text>
+          <text x="14" y="20" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">🔒 TLS SAN de 20 Años</text>
         </g>
         <g transform="translate(506, 0)">
           <rect width="170" height="32" rx="8" fill="#2E1224" stroke="#DB2777" stroke-width="1.2"/>
-          <text x="14" y="20" fill="#F472B6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">🌐 2.5GbE Dual-NIC Pod</text>
+          <text x="14" y="20" fill="#F472B6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">🌐 Pod Doble NIC 2.5G</text>
         </g>
         <g transform="translate(688, 0)">
           <rect width="155" height="32" rx="8" fill="#1C1E33" stroke="#6366F1" stroke-width="1.2"/>
@@ -94,7 +94,7 @@
 
       <g transform="translate(0, 184)">
         <text x="0" y="14" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">
-          <tspan fill="#67E8F9">0ms</tspan> Local Loopback · <tspan fill="#A78BFA">1s</tspan> Instant Failover · <tspan fill="#A7F3D0">7.5MB</tspan> UDP Buffers · <tspan fill="#F472B6">1~2</tspan> vCPU
+          <tspan fill="#67E8F9">0ms</tspan> Loopback local · <tspan fill="#A78BFA">1s</tspan> Conmutación instantánea · <tspan fill="#A7F3D0">7.5MB</tspan> Búferes UDP · <tspan fill="#F472B6">1~2</tspan> vCPU
         </text>
       </g>
     </g>

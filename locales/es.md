@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="../docs/assets/banner.svg" alt="AdGuard Home: Stack de Alto Rendimiento para Homelab" width="100%" />
+  <img src="../docs/assets/locales/es/banner.svg" alt="AdGuard Home: Stack de Alto Rendimiento para Homelab" width="100%" />
 </picture>
 
 # AdGuard Home: Stack de Alto Rendimiento para Homelab
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
+  <img src="../docs/assets/locales/es/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
 </p>
 
 </div>
@@ -45,7 +45,7 @@
 Esta arquitectura se basa en una estricta **segmentación física** y **resiliencia de nodos independientes sin acoplamiento (Zero-Coupling Pod Isolation)**, separando la red externa WAN no confiable del tráfico interno LAN de alto ancho de banda.
 
 <p align="center">
-  <img src="../docs/assets/network-topology.svg" alt="Network Topology" width="100%" />
+  <img src="../docs/assets/locales/es/network-topology.svg" alt="Network Topology" width="100%" />
 </p>
 
 ### 1. 🌐 Red Externa (WAN / Enlace Ascendente)
@@ -66,7 +66,7 @@ Esta arquitectura se basa en una estricta **segmentación física** y **resilien
 
 | Componente | Requisitos Mínimos (Laboratorio Básico) | Especificaciones Recomendadas (Producción Homelab) | Pod Empresarial Multinodo (Validado) |
 | :--- | :--- | :--- | :--- |
-| **CPU** | 1 vCPU (x86_64 o ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Host físico) |
+| **CPU** | 1 vCPU (x86_64 o ARM64) | 1 ~ 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Host físico) |
 | **Memoria (RAM)** | 512 MB (con ZRAM) | 1024 MB ~ 2048 MB | 16 GB+ Host (1024 MB dedicados por VM) |
 | **Optimización de Memoria** | Swap estándar en disco | ZRAM (zstd, swappiness 180) | ZRAM 1GB + page-cluster 0 |
 | **Almacenamiento (Disco)** | 8 GB Disco Virtual | 16 GB NVMe SSD | Almacenamiento PCIe NVMe de alta velocidad |
@@ -140,7 +140,7 @@ Esta arquitectura se basa en una estricta **segmentación física** y **resilien
 
 ### 1. Requisitos Previos
 - VM limpia con Debian 12 / 13 o Ubuntu 22.04 / 24.04.
-- Especificaciones sugeridas: 1 vCPU, 1024 MB RAM, 16 GB Disco, Doble NIC (WAN + LAN 2.5G).
+- Especificaciones sugeridas: 1 ~ 2 vCPU, 1024 MB RAM, 16 GB Disco, Doble NIC (WAN + LAN 2.5G).
 
 ### 2. Despliegue Automatizado de Nodos
 ```bash

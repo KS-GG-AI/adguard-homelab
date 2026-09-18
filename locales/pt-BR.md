@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="../docs/assets/banner.svg" alt="AdGuard Home: Stack de Alto Desempenho para Homelab" width="100%" />
+  <img src="../docs/assets/locales/pt-BR/banner.svg" alt="AdGuard Home: Stack de Alto Desempenho para Homelab" width="100%" />
 </picture>
 
 # AdGuard Home: Stack de Alto Desempenho para Homelab
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
+  <img src="../docs/assets/locales/pt-BR/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
 </p>
 
 </div>
@@ -45,7 +45,7 @@
 Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliência de pods independentes sem acoplamento (Zero-Coupling Pod Isolation)**, separando o tráfego externo WAN não confiável da rede interna LAN de alta largura de banda.
 
 <p align="center">
-  <img src="../docs/assets/network-topology.svg" alt="Network Topology" width="100%" />
+  <img src="../docs/assets/locales/pt-BR/network-topology.svg" alt="Network Topology" width="100%" />
 </p>
 
 ### 1. 🌐 Rede Externa (WAN / Uplink)
@@ -66,7 +66,7 @@ Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliênci
 
 | Componente | Requisitos Mínimos (Laboratório Básico) | Especificações Recomendadas (Produção Homelab) | Pod Corporativo Multi-Nó (Validado) |
 | :--- | :--- | :--- | :--- |
-| **CPU** | 1 vCPU (x86_64 ou ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Host físico) |
+| **CPU** | 1 vCPU (x86_64 ou ARM64) | 1 ~ 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Host físico) |
 | **Memória (RAM)** | 512 MB (com ZRAM) | 1024 MB ~ 2048 MB | 16 GB+ Host (1024 MB dedicados por VM) |
 | **Otimização de Memória** | Swap padrão em disco | ZRAM (zstd, swappiness 180) | ZRAM 1GB + page-cluster 0 |
 | **Armazenamento (Disco)** | 8 GB Disco Virtual | 16 GB NVMe SSD | Armazenamento PCIe NVMe de alta velocidade |
@@ -140,7 +140,7 @@ Esta arquitetura baseia-se na rigorosa **segmentação física** e **resiliênci
 
 ### 1. Pré-requisitos
 - VM limpa com Debian 12 / 13 ou Ubuntu 22.04 / 24.04.
-- Configuração recomendada: 1 vCPU, 1024 MB RAM, 16 GB Disco, Placa de Rede Dupla (WAN + LAN 2.5G).
+- Configuração recomendada: 1 ~ 2 vCPU, 1024 MB RAM, 16 GB Disco, Placa de Rede Dupla (WAN + LAN 2.5G).
 
 ### 2. Instalação Automatizada do Nó
 ```bash

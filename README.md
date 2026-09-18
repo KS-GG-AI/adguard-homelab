@@ -1,7 +1,7 @@
 ﻿<div align="center">
 
 <picture>
-  <img src="docs/assets/banner.svg" alt="AdGuard Home High-Performance Homelab Stack" width="100%" />
+  <img src="docs/assets/locales/en/banner.svg" alt="AdGuard Home High-Performance Homelab Stack" width="100%" />
 </picture>
 
 # AdGuard Home High-Performance Homelab Stack
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="docs/assets/dns-flow.gif" alt="Real-time DNS Resolution Flow & Instant Failover" width="92%" />
+  <img src="docs/assets/locales/en/dns-flow.gif" alt="Real-time DNS Resolution Flow & Instant Failover" width="92%" />
 </p>
 
 </div>
@@ -45,7 +45,7 @@
 This stack is engineered around strict **physical segmentation** and **zero-coupling pod resilience**, separating untrusted external WAN uplinks from high-bandwidth internal LAN traffic.
 
 <p align="center">
-  <img src="docs/assets/network-topology.svg" alt="Multi-Node Network Topology" width="100%" />
+  <img src="docs/assets/locales/en/network-topology.svg" alt="Multi-Node Network Topology" width="100%" />
 </p>
 
 ### 1. 🌐 External Network (WAN / Uplink)
@@ -73,7 +73,7 @@ This stack is engineered around strict **physical segmentation** and **zero-coup
 
 | Specification | Minimum Requirements (Basic Testbed) | Recommended Specifications (Home Production) | Multi-Node Enterprise Pod (Tested) |
 | :--- | :--- | :--- | :--- |
-| **CPU** | 1 vCPU (x86_64 or ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Host) |
+| **CPU** | 1 vCPU (x86_64 or ARM64) | 1 ~ 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Host) |
 | **Memory (RAM)** | 512 MB (ZRAM enabled) | 1024 MB ~ 2048 MB | 16 GB+ Host (1024 MB dedicated per VM) |
 | **Memory Tuning** | Default swap | ZRAM (zstd, swappiness 180) | ZRAM 1GB + `page-cluster 0` |
 | **Disk Storage** | 8 GB Virtual Disk | 16 GB NVMe SSD | PCIe 3.0/4.0 NVMe Storage |
@@ -149,7 +149,7 @@ This stack is engineered around strict **physical segmentation** and **zero-coup
 
 ### 1. Prerequisites
 - Fresh Debian 12 / 13 or Ubuntu 22.04 / 24.04 VM.
-- Suggested Specs: 1 vCPU, 1024 MB RAM, 16 GB Disk, 2 Network Interfaces (WAN + Internal 2.5G).
+- Suggested Specs: 1 ~ 2 vCPU, 1024 MB RAM, 16 GB Disk, 2 Network Interfaces (WAN + Internal 2.5G).
 
 ### 2. Automated Node Setup
 Clone the repository and run the setup script with your desired static IP:

@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="../docs/assets/banner.svg" alt="AdGuard Home: Высокопроизводительный стек для Homelab" width="100%" />
+  <img src="../docs/assets/locales/ru/banner.svg" alt="AdGuard Home: Высокопроизводительный стек для Homelab" width="100%" />
 </picture>
 
 # AdGuard Home: Высокопроизводительный стек для Homelab
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
+  <img src="../docs/assets/locales/ru/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
 </p>
 
 </div>
@@ -45,7 +45,7 @@
 Данная архитектура построена на принципах **строгой физической сегментации** и **полной изоляции независимых узлов (Zero-Coupling Pod Isolation)**, надежно отделяя ненадежный внешний интернет (WAN) от высокоскоростного внутреннего трафика (LAN).
 
 <p align="center">
-  <img src="../docs/assets/network-topology.svg" alt="Network Topology" width="100%" />
+  <img src="../docs/assets/locales/ru/network-topology.svg" alt="Network Topology" width="100%" />
 </p>
 
 ### 1. 🌐 Внешняя сеть (WAN / Аплинк)
@@ -66,7 +66,7 @@
 
 | Компонент | Минимальные требования (Базовый тест) | Рекомендуемые требования (Homelab Production) | Корпоративный мульти-узел (Протестировано) |
 | :--- | :--- | :--- | :--- |
-| **Процессор (CPU)** | 1 vCPU (x86_64 или ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Физический хост) |
+| **Процессор (CPU)** | 1 vCPU (x86_64 или ARM64) | 1 ~ 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Физический хост) |
 | **Память (RAM)** | 512 МБ (с ZRAM) | 1024 МБ ~ 2048 МБ | 16 ГБ+ Хост (выделено 1024 МБ на каждую ВМ) |
 | **Оптимизация памяти** | Стандартный swap на диске | ZRAM (zstd, swappiness 180) | ZRAM 1ГБ + page-cluster 0 |
 | **Диск (Storage)** | 8 ГБ виртуальный диск | 16 ГБ NVMe SSD | Высокоскоростной накопитель PCIe NVMe |

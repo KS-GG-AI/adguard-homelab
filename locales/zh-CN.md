@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="../docs/assets/banner.svg" alt="AdGuard Home 高性能家庭实验室集群套件" width="100%" />
+  <img src="../docs/assets/locales/zh-CN/banner.svg" alt="AdGuard Home 高性能家庭实验室集群套件" width="100%" />
 </picture>
 
 # AdGuard Home 高性能家庭实验室集群套件
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
+  <img src="../docs/assets/locales/zh-CN/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
 </p>
 
 </div>
@@ -45,7 +45,7 @@
 本架构遵循**物理网络分流 (Physical Segmentation)**与**零耦合独立节点隔离 (Zero-Coupling Pod Isolation)**原则，彻底隔绝不可信外部网络与高带宽内网私有通信。
 
 <p align="center">
-  <img src="../docs/assets/network-topology.svg" alt="Network Topology" width="100%" />
+  <img src="../docs/assets/locales/zh-CN/network-topology.svg" alt="Network Topology" width="100%" />
 </p>
 
 ### 🌐 外部网络 (WAN / 上行链路)
@@ -66,7 +66,7 @@
 
 | 规格组件 | 最低配置要求 (基础测试环境) | 推荐生产规格 (家庭核心实验室) | 企业级多节点规格 (实测验证) |
 | :--- | :--- | :--- | :--- |
-| **CPU** | 1 vCPU (x86_64 / ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (物理宿主) |
+| **CPU** | 1 vCPU (x86_64 / ARM64) | 1 ~ 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (物理宿主) |
 | **内存 (RAM)** | 512 MB (需开启 ZRAM) | 1024 MB ~ 2048 MB | 16 GB+ 物理内存 (每 VM 分配 1GB) |
 | **内存优化** | 常规磁盘交换 | ZRAM (zstd, swappiness 180) | ZRAM 1GB + page-cluster 0 |
 | **存储空间** | 8 GB 虚拟磁盘 | 16 GB NVMe SSD | PCIe 3.0/4.0 高速 NVMe |
@@ -140,7 +140,7 @@
 
 ### 1. 前置环境准备
 - 全新 Debian 12 / 13 或 Ubuntu 22.04 / 24.04 虚拟机。
-- 推荐规格：1 vCPU, 1024 MB RAM, 16 GB 磁盘, 双网卡 (WAN + 内网 2.5G)。
+- 推荐规格：1 ~ 2 vCPU, 1024 MB RAM, 16 GB 磁盘, 双网卡 (WAN + 内网 2.5G)。
 
 ### 2. 自动化节点安装部署
 ```bash

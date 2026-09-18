@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="../docs/assets/banner.svg" alt="AdGuard Home: Stack Homelab Performa Tinggi" width="100%" />
+  <img src="../docs/assets/locales/id/banner.svg" alt="AdGuard Home: Stack Homelab Performa Tinggi" width="100%" />
 </picture>
 
 # AdGuard Home: Stack Homelab Performa Tinggi
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
+  <img src="../docs/assets/locales/id/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
 </p>
 
 </div>
@@ -45,7 +45,7 @@
 Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan **ketahanan pod independen tanpa kopling (Zero-Coupling Pod Isolation)**, memisahkan lalu lintas uplink WAN eksternal yang tidak tepercaya dari lalu lintas LAN internal berkecepatan tinggi.
 
 <p align="center">
-  <img src="../docs/assets/network-topology.svg" alt="Network Topology" width="100%" />
+  <img src="../docs/assets/locales/id/network-topology.svg" alt="Network Topology" width="100%" />
 </p>
 
 ### 1. 🌐 Jaringan Eksternal (WAN / Uplink)
@@ -66,7 +66,7 @@ Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan 
 
 | Komponen | Persyaratan Minimum (Lingkungan Uji Coba) | Spesifikasi Rekomendasi (Produksi Homelab) | Pod Perusahaan Multi-Node (Teruji) |
 | :--- | :--- | :--- | :--- |
-| **CPU** | 1 vCPU (x86_64 atau ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Host Fisik) |
+| **CPU** | 1 vCPU (x86_64 atau ARM64) | 1 ~ 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (Host Fisik) |
 | **Memori (RAM)** | 512 MB (dengan ZRAM) | 1024 MB ~ 2048 MB | 16 GB+ Host (1024 MB khusus per VM) |
 | **Optimasi Memori** | Swap disk standar | ZRAM (zstd, swappiness 180) | ZRAM 1GB + page-cluster 0 |
 | **Penyimpanan (Disk)** | 8 GB Disk Virtual | 16 GB NVMe SSD | Penyimpanan Cepat PCIe NVMe |
@@ -140,7 +140,7 @@ Arsitektur ini dibangun berdasarkan prinsip **segmentasi fisik** yang ketat dan 
 
 ### 1. Prasyarat
 - VM baru dengan Debian 12 / 13 atau Ubuntu 22.04 / 24.04.
-- Spesifikasi yang disarankan: 1 vCPU, 1024 MB RAM, 16 GB Disk, Kartu Jaringan Ganda (WAN + LAN 2.5G).
+- Spesifikasi yang disarankan: 1 ~ 2 vCPU, 1024 MB RAM, 16 GB Disk, Kartu Jaringan Ganda (WAN + LAN 2.5G).
 
 ### 2. Instalasi Node Otomatis
 ```bash

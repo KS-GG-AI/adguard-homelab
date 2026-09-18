@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="../docs/assets/banner.svg" alt="AdGuard Home: مكدس مختبر منزلي عالي الأداء" width="100%" />
+  <img src="../docs/assets/locales/ar/banner.svg" alt="AdGuard Home: مكدس مختبر منزلي عالي الأداء" width="100%" />
 </picture>
 
 # AdGuard Home: مكدس مختبر منزلي عالي الأداء
@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
+  <img src="../docs/assets/locales/ar/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
 </p>
 
 </div>
@@ -47,7 +47,7 @@
 تم تصميم هذه البنية بناءً على مبادئ **الفصل المادي الصارم للشبكات (Physical Segmentation)** و**عزل الحاويات المستقلة بدون اقتران (Zero-Coupling Pod Isolation)**، مما يعزل تماماً الإنترنت الخارجي غير الموثوق عن الشبكة المحلية الداخلية عالية السرعة.
 
 <p align="center">
-  <img src="../docs/assets/network-topology.svg" alt="Network Topology" width="100%" />
+  <img src="../docs/assets/locales/ar/network-topology.svg" alt="Network Topology" width="100%" />
 </p>
 
 ### 1. 🌐 الشبكة الخارجية (WAN / الرابط الصاعد)
@@ -68,7 +68,7 @@
 
 | المكون | المتطلبات الدنيا (بيئة اختبار بسيطة) | المواصفات الموصى بها (بيئة الإنتاج المنزلي) | عقدة مؤسسية متعددة الأجهزة (تم التحقق منها) |
 | :--- | :--- | :--- | :--- |
-| **المعالج (CPU)** | 1 vCPU (x86_64 أو ARM64) | 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (خادم مادي) |
+| **المعالج (CPU)** | 1 vCPU (x86_64 أو ARM64) | 1 ~ 2 vCPU (x86_64) | Intel N100 / AMD Ryzen 5+ (خادم مادي) |
 | **الذاكرة (RAM)** | 512 ميجابايت (مع تفعيل ZRAM) | 1024 ميجابايت ~ 2048 ميجابايت | 16 جيجابايت+ خادم مادي (1024 ميجابايت مخصصة لكل VM) |
 | **تحسين الذاكرة** | مساحة مبادلة افتراضية على القرص | ZRAM (zstd, swappiness 180) | ZRAM 1GB + page-cluster 0 |
 | **التخزين (القرص)** | قرص افتراضي 8 جيجابايت | 16 جيجابايت NVMe SSD | تخزين فائق السرعة PCIe NVMe |
