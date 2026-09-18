@@ -1,0 +1,15 @@
+[Unit]
+Description=ByeDPI - SOCKS5 Proxy Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ciadpi -i 0.0.0.0 -p 1080 --max-conn 512 --split 1+s --disorder 1 --mod-http h,d,r
+Restart=always
+RestartSec=3
+User=nobody
+Group=nogroup
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

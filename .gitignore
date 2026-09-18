@@ -1,0 +1,27 @@
+# SSL Certificates & Private Keys
+*.key
+*.pem
+*.crt
+*.pfx
+*.csr
+/ssl/
+/certs/
+
+# AdGuard Home Runtime Data & Databases
+/data/
+/data/*
+*.db
+*.log
+
+# Environment & Secrets
+.env
+.env.*
+*.secret
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/

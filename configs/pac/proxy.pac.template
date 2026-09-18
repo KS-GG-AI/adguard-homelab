@@ -1,0 +1,44 @@
+// Proxy Auto-Configuration (PAC) Script Template
+// Automatically routes blocked sites through local ByeDPI proxy while keeping local and media traffic DIRECT.
+
+function FindProxyForURL(url, host) {
+    host = host.toLowerCase();
+
+    // 1. Local LAN & Private Subnets Direct
+    if (isPlainHostName(host) ||
+        shExpMatch(host, "*.local") ||
+        shExpMatch(host, "*.lan") ||
+        shExpMatch(host, "*.internal") ||
+        shExpMatch(host, "localhost") ||
+        shExpMatch(host, "127.*") ||
+        shExpMatch(host, "10.*") ||
+        shExpMatch(host, "192.168.*") ||
+        shExpMatch(host, "172.16.*") ||
+        shExpMatch(host, "172.31.*")) {
+        return "DIRECT";
+    }
+
+    // 2. High-bandwidth streaming & gaming traffic (Zero stutter guaranteed)
+    if (shExpMatch(host, "*.youtube.com") ||
+        shExpMatch(host, "youtube.com") ||
+        shExpMatch(host, "*.googlevideo.com") ||
+        shExpMatch(host, "*.netflix.com") ||
+        shExpMatch(host, "*.twitch.tv") ||
+        shExpMatch(host, "*.steampowered.com") ||
+        shExpMatch(host, "*.battle.net")) {
+        return "DIRECT";
+    }
+
+    // 3. Local SOCKS5 Proxy definition (Replace __NODE_IP__ with your instance IP)
+    var BYEDPI = "SOCKS5 __NODE_IP__:1080; DIRECT";
+
+    // 4. Domains requiring DPI bypass
+    if (shExpMatch(host, "*.nyaa.si") ||
+        shExpMatch(host, "*.rutracker.org") ||
+        shExpMatch(host, "*.archive.org") ||
+        shExpMatch(host, "*.archive.today")) {
+        return BYEDPI;
+    }
+
+    return "DIRECT";
+}
