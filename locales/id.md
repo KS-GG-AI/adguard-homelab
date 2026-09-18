@@ -38,7 +38,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/locales/id/dns-flow.gif" alt="DNS Flow Animation" width="92%" />
+  <img src="../docs/assets/locales/id/dns-flow.gif" alt="DNS Flow Animation" width="100%" />
 </p>
 
 </div>

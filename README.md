@@ -38,7 +38,7 @@
 </p>
 
 <p>
-  <img src="docs/assets/locales/en/dns-flow.gif" alt="Real-time DNS Resolution Flow & Instant Failover" width="92%" />
+  <img src="docs/assets/locales/en/dns-flow.gif" alt="Real-time DNS Resolution Flow & Instant Failover" width="100%" />
 </p>
 
 </div>

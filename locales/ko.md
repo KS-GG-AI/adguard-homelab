@@ -38,7 +38,7 @@
 </p>
 
 <p>
-  <img src="../docs/assets/locales/ko/dns-flow.gif" alt="실시간 DNS 질의 처리 및 0ms 초고속 응답 흐름" width="92%" />
+  <img src="../docs/assets/locales/ko/dns-flow.gif" alt="실시간 DNS 질의 처리 및 0ms 초고속 응답 흐름" width="100%" />
 </p>
 
 </div>
