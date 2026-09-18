@@ -1,5 +1,7 @@
 # AdGuard Home High-Performance Homelab Stack
 
+**🇺🇸 English** · [🇰🇷 한국어](locales/ko.md) · [🇨🇳 中文](locales/zh-CN.md) · [🇪🇸 Español](locales/es.md) · [🇮🇳 हिन्दी](locales/hi.md) · [🇸🇦 العربية](locales/ar.md) · [🇧🇷 Português](locales/pt-BR.md) · [🇷🇺 Русский](locales/ru.md) · [🇫🇷 Français](locales/fr.md) · [🇮🇩 Bahasa Indonesia](locales/id.md)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![AdGuard Home](https://img.shields.io/badge/AdGuard%20Home-v0.107+-green.svg)](https://adguard.com/adguard-home.html)
 [![HTTP/2 & HTTP/3](https://img.shields.io/badge/Protocol-HTTP%2F2%20%7C%20HTTP%2F3%20QUIC-orange.svg)]()
