@@ -1,8 +1,13 @@
 <div align="center">
 
-<picture>
-  <img src="../docs/assets/locales/id/banner.svg" alt="AdGuard Home: Stack Homelab Performa Tinggi" width="100%" />
-</picture>
+<p>
+  <picture>
+    <img src="../docs/assets/locales/id/banner.svg" alt="AdGuard Home: Stack Homelab Performa Tinggi" width="78%" />
+  </picture>
+  <picture>
+    <img src="../docs/assets/shield.gif" alt="Lencana perisai pertahanan AdGuard Home" width="20%" />
+  </picture>
+</p>
 
 # AdGuard Home: Stack Homelab Performa Tinggi
 

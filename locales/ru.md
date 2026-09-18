@@ -1,8 +1,13 @@
 <div align="center">
 
-<picture>
-  <img src="../docs/assets/locales/ru/banner.svg" alt="AdGuard Home: Высокопроизводительный стек для Homelab" width="100%" />
-</picture>
+<p>
+  <picture>
+    <img src="../docs/assets/locales/ru/banner.svg" alt="AdGuard Home: Высокопроизводительный стек для Homelab" width="78%" />
+  </picture>
+  <picture>
+    <img src="../docs/assets/shield.gif" alt="Защитный кибер-бейдж AdGuard Home" width="20%" />
+  </picture>
+</p>
 
 # AdGuard Home: Высокопроизводительный стек для Homelab
 

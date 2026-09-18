@@ -1,8 +1,13 @@
 <div align="center">
 
-<picture>
-  <img src="../docs/assets/locales/fr/banner.svg" alt="AdGuard Home : Stack Haute Performance pour Homelab" width="100%" />
-</picture>
+<p>
+  <picture>
+    <img src="../docs/assets/locales/fr/banner.svg" alt="AdGuard Home : Stack Haute Performance pour Homelab" width="78%" />
+  </picture>
+  <picture>
+    <img src="../docs/assets/shield.gif" alt="Badge de bouclier de défense AdGuard Home" width="20%" />
+  </picture>
+</p>
 
 # AdGuard Home : Stack Haute Performance pour Homelab
 

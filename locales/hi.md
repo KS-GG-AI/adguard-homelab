@@ -1,8 +1,13 @@
 <div align="center">
 
-<picture>
-  <img src="../docs/assets/locales/hi/banner.svg" alt="AdGuard Home: उच्च-प्रदर्शन होमलैब क्लस्टर स्टैक" width="100%" />
-</picture>
+<p>
+  <picture>
+    <img src="../docs/assets/locales/hi/banner.svg" alt="AdGuard Home: उच्च-प्रदर्शन होमलैब क्लस्टर स्टैक" width="78%" />
+  </picture>
+  <picture>
+    <img src="../docs/assets/shield.gif" alt="AdGuard Home रक्षा उपकरण बैज" width="20%" />
+  </picture>
+</p>
 
 # AdGuard Home: उच्च-प्रदर्शन होमलैब क्लस्टर स्टैक
 

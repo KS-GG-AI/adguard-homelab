@@ -1,8 +1,13 @@
 <div align="center">
 
-<picture>
-  <img src="../docs/assets/locales/zh-CN/banner.svg" alt="AdGuard Home 高性能家庭实验室集群套件" width="100%" />
-</picture>
+<p>
+  <picture>
+    <img src="../docs/assets/locales/zh-CN/banner.svg" alt="AdGuard Home 高性能家庭实验室集群套件" width="78%" />
+  </picture>
+  <picture>
+    <img src="../docs/assets/shield.gif" alt="AdGuard Home 独立安全防护徽章" width="20%" />
+  </picture>
+</p>
 
 # AdGuard Home 高性能家庭实验室集群套件
 

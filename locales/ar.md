@@ -1,8 +1,13 @@
 <div align="center">
 
-<picture>
-  <img src="../docs/assets/locales/ar/banner.svg" alt="AdGuard Home: مكدس مختبر منزلي عالي الأداء" width="100%" />
-</picture>
+<p>
+  <picture>
+    <img src="../docs/assets/locales/ar/banner.svg" alt="AdGuard Home: مكدس مختبر منزلي عالي الأداء" width="78%" />
+  </picture>
+  <picture>
+    <img src="../docs/assets/shield.gif" alt="شارة درع حماية AdGuard Home" width="20%" />
+  </picture>
+</p>
 
 # AdGuard Home: مكدس مختبر منزلي عالي الأداء
 

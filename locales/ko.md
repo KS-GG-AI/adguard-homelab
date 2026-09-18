@@ -1,8 +1,13 @@
 ﻿<div align="center">
 
-<picture>
-  <img src="../docs/assets/locales/ko/banner.svg" alt="AdGuard Home 고성능 홈랩 클러스터 스택" width="100%" />
-</picture>
+<p>
+  <picture>
+    <img src="../docs/assets/locales/ko/banner.svg" alt="AdGuard Home 고성능 홈랩 클러스터 스택" width="78%" />
+  </picture>
+  <picture>
+    <img src="../docs/assets/shield.gif" alt="AdGuard Home 단독 어플라이언스 보안 방패 배지" width="20%" />
+  </picture>
+</p>
 
 # AdGuard Home 고성능 홈랩 클러스터 스택
 
